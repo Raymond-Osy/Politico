@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:300,600i");
 @import url('https://fonts.googleapis.com/css?family=Sacramento');
+@import url('./modules/form.css');
 
 html {
     margin: 0;
