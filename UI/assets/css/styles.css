@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito:300,600i");
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+
+html {
+    margin: 0;
+    height: 100%;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+body {
+    margin: 0;
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    color: white;
+    background: url("../img/bg0.png") no-repeat center center;
+    background-color: white;
+    background-size: cover;
+    background-attachment: fixed;
+    justify-content: space-between;
+    font-family: "Nunito", sans-serif;
+} 
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+/* Navigation Bar */
+nav .logo-div{
+	flex: 30%;
+    max-width: 30%;
+    font-family: 'Sacramento', cursive;
+    /* font-family: 'Aldrich'; */
+    font-size: 22px;
+    color:#ffffff;
+    text-align: left;
+}
+nav .signup-signin-div{
+	flex: 70%;
+	max-width: 70%;
+    font-family: 'Aldrich';
+    color:#ffffff;    
+    text-align:right;    
+}
+nav .signup-signin-div h4{
+    margin-right:3rem;        
+}
+nav a {
+    color: inherit; 
+    text-decoration:none;
+} 
+nav h1 {
+    padding-left: 2.5rem;
+}
+.m-side {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+/* Main section elements */
+.logo {
+    color: #4CAF50;
+    font-weight: bold;
+}
+.main-info h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 40px;
+    text-shadow: 3px 3px 3px #000;
+}
+.main-info p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-shadow: 3px 3px 3px #000;
+}
+.main-info a {
+    display: inline-block;
+    background-color: #4CAF50;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 25px;
+    padding: 20px;
+    width: 20%;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+.main-info a span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.main-info a span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.main-info a:hover span {
+    padding-right: 25px;
+}
+  
+.main-info a:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+/* Footer contents */
+.footer-container {
+    background-color:#4CAF50;
+    color: #fff;
+}
+.footer-item-container {
+    display: flex;
+    align-items: stretch;
+}
+.abt-header {
+    text-align: center;
+    padding: 10px;
+}
+.abt-body {
+    text-align: center;
+    padding: 10px;
+}
+.footer-container-2 {
+    display: flex;
+    height: 70px;
+    color: #FFFFFF;
+    padding: 0 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    /* margin-top: 10px; */
+}
+
+/* Positionings */
+.col-100 {
+    flex: 100%;
+}
+.col-75 {
+    flex: 75%;
+}
+.col-70 {
+    flex: 70%;
+}
+.col-60 {
+    flex: 60%;
+}
+.col-50 {
+    flex: 50%;
+}
+.col-40 {
+    flex: 40%;
+}
+.col-30 {
+    flex: 30%;
+}
+.col-25 {
+    flex: 25%;
+}
+.left {
+    justify-content: flex-start;
+}
+.right {
+    justify-content: flex-end;
+}
+.center {
+    justify-content: center;
+}
