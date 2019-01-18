@@ -175,6 +175,26 @@ div.content {
     border-bottom: 2px solid #252525;
 }
 
+.wrap {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+.card {
+    background-color: #ffffff;
+    padding: 5px;
+    margin: 15px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 250px;
+    min-height: 130px;
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
 /* Footer */
 .footer {
     display: flex;
