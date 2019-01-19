@@ -9,7 +9,7 @@ body {
     color: #333;
 }
 
-/* Side navigation styles */
+/* SIDE NAVIGATION BAR */
 .sidebar {
     margin: 0;
     padding: 0;
@@ -26,14 +26,12 @@ body {
     padding: 16px;
     text-decoration: none;
 }
-   
 .sidebar a.active {
     border-left: 3px solid #4CAF50;
     background-color: #F1F2F2;
     transition: background-color 0.5s;
     color: #4CAF50;
 }
-
 .sb-links a:hover {
     background-color: #F1F2F2;
     color: #4CAF50;
@@ -63,7 +61,6 @@ div.content {
     flex-direction: column;
     text-align: center;
     align-items: center;
-
 }
 .name-circle {
     text-align: center;
@@ -73,7 +70,8 @@ div.content {
     border-radius: 50%;
     color: #ffffff;
 }
-/* Navigation Bar */
+
+/* BODY NAVIGATION BAR */
 .img-size {
     height: 25px;
 }
@@ -88,7 +86,8 @@ div.content {
     padding-top: 15px;
     flex: 10%;
 }
-/* Main content */
+
+/* MAIN CONTENT */
 .content-wrapper {
     display: flex;
     flex-direction: column;
@@ -96,7 +95,7 @@ div.content {
     padding: 8px;
     margin: 10px 0px;
 }
-/* Table for dashboard */
+/* TABLE FOR DASHBOARD */
 #table {
     border-collapse: collapse;
     width: 100%;
@@ -124,7 +123,7 @@ div.content {
     width: 60%;
 }
 
-/* Buttons */
+/* BUTTONS */
 .add-btn {
     display: flex;
     justify-content: center;
@@ -180,6 +179,8 @@ div.content {
     flex-direction: row-reverse;
     flex-wrap: wrap;
 }
+
+/* CARD */
 .card {
     background-color: #ffffff;
     padding: 5px;
@@ -195,7 +196,7 @@ div.content {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-/* Footer */
+/* FOOTER */
 .footer {
     display: flex;
     height: 70px;
@@ -208,7 +209,7 @@ div.content {
     /* margin-top: 20px; */
 }
 
-/* Form- For the office page */
+/* FORM - FOR OFFICE PAGE */
   input[type=text], select, textarea {
     width: 70%;
     padding: 12px;
@@ -216,13 +217,11 @@ div.content {
     border-radius: 4px;
     resize: vertical;
   }
-  
-  label {
+label {
     padding: 12px 12px 12px 0;
     display: inline-block;
-  }
-  
-  input[type=submit] {
+} 
+input[type=submit] {
     background-color: #4CAF50;
     color: white;
     padding: 12px 20px;
@@ -230,49 +229,44 @@ div.content {
     border-radius: 4px;
     cursor: pointer;
     float: right;
-  }
-  
-  input[type=submit]:hover {
+}
+input[type=submit]:hover {
     background-color: #45a049;
-  }
-  
-  .container {
+}
+.container {
     width: 70%;
     margin: 17px auto; 
     border-radius: 5px;
     background-color: #ffffff;
     padding: 20px;
-  }
-  
-  .col-25 {
+}
+.col-25 {
     float: left;
     width: 25%;
     margin-top: 6px;
-  }
-  
-  .col-75 {
+}
+.col-75 {
     float: left;
     width: 75%;
     margin-top: 6px;
-  }
-  
+}
   /* Clear floats after the columns */
-  .row:after {
+.row:after {
     content: "";
     display: table;
     clear: both;
-  }
+}
   
   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
     .col-25, .col-75, input[type=submit] {
-      width: 100%;
-      margin-top: 0;
+        width: 100%;
+        margin-top: 0;
     }
-  }
+}
 
 
-/* Colors*/
+/* COLORS*/
 .danger {
     color: #d50000;
 }
