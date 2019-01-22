@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="shortcut icon" href="assets/img/favicon.jpg">
-        
         <title>Politico| office</title>
     </head>
     <body>
@@ -45,52 +44,50 @@
                 <div class="menu-text">
                     <div class="line">
                         <div class="text-center">
-                            <h1>Fill the form below to create an Office</h1>
+                            <h1>Fill the form below to create an office</h1>
                         </div>
                     </div>
                 </div>
+                <div class="btn-container">
+                    <button class="btn bg-success"><i class="fas fa-list" aria-hidden="true"></i> Available Offices</button>
+                </div>
                 <div class="container">
-                    <form action="#">
-                        <div class="row">
-
+                    <form action="/action_page.php">
+                    <div class="row">
+                      <div class="col-25">
+                        <label for="lname">ID</label>
+                      </div>
+                      <div class="col-75">
+                        <input type="text" id="identity" name="id" placeholder="Enter Political parties ID here...">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-25">
+                        <label for="country">Type</label>
+                      </div>
+                      <div class="col-75">
+                        <select id="types" name="type">
+                          <option value="federal">Federal Government</option>
+                          <option value="legislative">Legislative Government</option>
+                          <option value="state">State Government</option>
+                          <option value="local">Local government</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                          <label for="fname">Name</label>
                         </div>
-                        <div class="row">
-                            <div class="col-25">
-                                <label for="lname">ID</label>
-                            </div>
-                            <div class="col-75">
-                                <input type="text" id="identity" name="id" placeholder="Enter IDhere...">
-                            </div>
+                        <div class="col-75">
+                          <input type="text" id="pname" name="partyname" placeholder="Enter Political office here...">
                         </div>
-                        <div class="row">
-                            <div class="col-25">
-                                <label for="lname">Office ID</label>
-                            </div>
-                            <div class="col-75">
-                                <input type="text" id="identity" name="id" placeholder="Enter Office ID here...">                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-25">
-                                <label for="lname">Party ID</label>
-                            </div>
-                            <div class="col-75">
-                                <input type="text" id="identity" name="id" placeholder="Enter Party ID here...">                            </div>
-                        </div>
-                        <div class="row">
-                                <div class="col-25">
-                                    <label for="lname">Candidate ID</label>
-                                </div>
-                                <div class="col-75">
-                                    <input type="text" id="identity" name="id" placeholder="Enter candidate ID here...">                            </div>
-                            </div>
-                        <div class="row">
-                            <input type="submit" value="Save">
-                        </div>
+                      </div>
+                    <div class="row-end">
+                      <input type="submit" value="Save">
+                    </div>
                     </form>
                   </div>
-                <div class="mt-20">
-                    <a href="party.html"><button class="btn bg-success"><i class="fas fa-list" aria-hidden="true"></i> Available Parties</button></a>
-                </div>
+
             </div>
             
             <div class="footer">

@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="shortcut icon" href="assets/img/favicon.jpg">
-        <title>Politico| office</title>
+        <title>Politico| party</title>
     </head>
     <body>
         <!-- Side Navigation bar -->
@@ -41,52 +41,188 @@
             </div>
             <!-- Main Content -->
             <div class="content-wrapper">
+                <div class="add-btn">
+                    <a href="createOffice.html"><button class="btn bg-success"><i class="fa fa-plus" aria-hidden="true"></i> Create An Office</button></a>
+                </div>
                 <div class="menu-text">
                     <div class="line">
                         <div class="text-center">
-                            <h1>Fill the form below to create an office</h1>
+                            <h1>Available Officies</h1>
                         </div>
                     </div>
                 </div>
-                <div class="container">
-                    <form action="/action_page.php">
-                    <div class="row">
-                      <div class="col-25">
-                        <label for="fname">Name</label>
-                      </div>
-                      <div class="col-75">
-                        <input type="text" id="pname" name="partyname" placeholder="Enter Political office here...">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-25">
-                        <label for="lname">ID</label>
-                      </div>
-                      <div class="col-75">
-                        <input type="text" id="identity" name="id" placeholder="Enter Political parties ID here...">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-25">
-                        <label for="country">Type</label>
-                      </div>
-                      <div class="col-75">
-                        <select id="types" name="type">
-                          <option value="federal">Federal Government</option>
-                          <option value="legislative">Legislative Government</option>
-                          <option value="state">State Government</option>
-                          <option value="local">Local government</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <input type="submit" value="Save">
-                    </div>
-                    </form>
-                  </div>
-                <div class="mt-20">
-                    <button class="btn bg-success"><i class="fas fa-list" aria-hidden="true"></i> Available Offices</button>
+
+                <div class="card-group">
+                    <div class="card">
+                        <div class="party-info">
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="type">ID:</label>
+                                </div>
+                                <div class="col-75">
+                                    <p>#1223</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="type">Type:</label>
+                                </div>
+                                <div class="col-75">
+                                    <select id="types" name="type">
+                                    <option value="federal">Federal Government</option>
+                                    <option value="legislative">Legislative Government</option>
+                                    <option value="state">State Government</option>
+                                    <option value="local">Local government</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="type">Name:</label>
+                                </div>
+                                <div class="col-75">
+                                    <p>PDP</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <div class="modify-btn">
+                                <button class="bg-warning">Edit</button>
+                            </div>
+                            <div class="modify-btn">
+                                <button class="bg-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div class="card">
+                        <div class="party-info">
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="type">ID:</label>
+                                </div>
+                                <div class="col-75">
+                                    <p>#1223</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="type">Type:</label>
+                                </div>
+                                <div class="col-75">
+                                    <select id="types" name="type">
+                                    <option value="federal">Federal Government</option>
+                                    <option value="legislative">Legislative Government</option>
+                                    <option value="state">State Government</option>
+                                    <option value="local">Local government</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="type">Name:</label>
+                                </div>
+                                <div class="col-75">
+                                    <p>PDP</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <div class="modify-btn">
+                                <button class="bg-warning">Edit</button>
+                            </div>
+                            <div class="modify-btn">
+                                <button class="bg-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div class="card">
+                        <div class="party-info">
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="type">ID:</label>
+                                </div>
+                                <div class="col-75">
+                                    <p>#1223</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="type">Type:</label>
+                                </div>
+                                <div class="col-75">
+                                    <select id="types" name="type">
+                                    <option value="federal">Federal Government</option>
+                                    <option value="legislative">Legislative Government</option>
+                                    <option value="state">State Government</option>
+                                    <option value="local">Local government</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="type">Name:</label>
+                                </div>
+                                <div class="col-75">
+                                    <p>PDP</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <div class="modify-btn">
+                                <button class="bg-warning">Edit</button>
+                            </div>
+                            <div class="modify-btn">
+                                <button class="bg-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div class="card">
+                        <div class="party-info">
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="type">ID:</label>
+                                </div>
+                                <div class="col-75">
+                                    <p>#1223</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="type">Type:</label>
+                                </div>
+                                <div class="col-75">
+                                    <select id="types" name="type">
+                                    <option value="federal">Federal Government</option>
+                                    <option value="legislative">Legislative Government</option>
+                                    <option value="state">State Government</option>
+                                    <option value="local">Local government</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="type">Name:</label>
+                                </div>
+                                <div class="col-75">
+                                    <p>PDP</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <div class="modify-btn">
+                                <button class="bg-warning">Edit</button>
+                            </div>
+                            <div class="modify-btn">
+                                <button class="bg-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div> 
+
                 </div>
+
             </div>
             
             <div class="footer">
@@ -95,3 +231,4 @@
         </div>
     </body>
 </html>
+
