@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:300,600i");
-@import url('https://fonts.googleapis.com/css?family=Sacramento');
 @import url('./modules/form.css');
 
 html {
@@ -40,8 +39,7 @@ body {
 nav .logo-div{
 	flex: 30%;
     max-width: 30%;
-    font-family: 'Sacramento', cursive;
-    /* font-family: 'Aldrich'; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 22px;
     color:#ffffff;
     text-align: left;
@@ -127,6 +125,7 @@ nav h1 {
 .footer-item-container {
     display: flex;
     align-items: stretch;
+    margin: 0 75px;
 }
 .abt-header {
     text-align: center;
@@ -182,3 +181,15 @@ nav h1 {
 .center {
     justify-content: center;
 }
+
+/* FOR LOWER SCREEN SIZES */
+@media screen and (max-width: 700px) {
+    .main-info a {
+        font-size: 18px;
+        padding: 15px;
+        width: 50%;
+    }
+    .footer-item-container {
+        margin: 0;
+    }
+  }

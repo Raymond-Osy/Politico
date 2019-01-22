@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:300,600i");
-@import url('https://fonts.googleapis.com/css?family=Sacramento');
 
 body {
     background-color: #EBEFF2;
@@ -50,7 +49,7 @@ div.content {
     flex-grow: 8;
     text-align: left;
     font-size: 30px;
-    font-family: 'Sacramento', cursive;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 600;
 }
 .logo:hover {
@@ -66,6 +65,9 @@ div.content {
     text-align: center;
     height: 50px;
     width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #4CAF50;
     border-radius: 50%;
     color: #ffffff;
@@ -86,6 +88,15 @@ div.content {
     padding-top: 15px;
     flex: 10%;
 }
+.col-50 {
+    flex: 50%;
+}
+.pt-20 {
+    padding-top: 25px;
+}
+.centered {
+    text-align: center;
+}
 
 /* MAIN CONTENT */
 .content-wrapper {
@@ -95,8 +106,79 @@ div.content {
     padding: 8px;
     margin: 10px 0px;
 }
+
+/* CARDS */
+.card {
+    flex: 0 1 33%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 5px;
+    margin-top: 15px;
+    text-align: center;
+    font-family: arial;
+}
+.card button {
+    border: none;
+    outline: 0;
+    padding: 8px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+.card-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-family: "Nunito", sans-serif;
+}
+.card button:hover {
+    opacity: 0.7;
+}
+.img-responsive {
+    display: block;
+	border: 0;
+	width: 100%;
+	height: 150px;
+}
+.party-info {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    font-size: 75%;
+    text-align: left;
+}
+.btn-group {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    font-size: 75%;
+}
+.modify-btn {
+    flex: 50%;
+    text-align: center;
+}
+.card > p {
+    text-align: start;
+    font-size: 15px;
+    margin-top: 0;
+}
+
+.menu-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.text-center {
+    font-family: 'Sacramento', cursive;
+}
+.line {
+    padding: 0px 100px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #252525;
+}
 /* TABLE FOR DASHBOARD */
-#table {
+/* #table {
     border-collapse: collapse;
     width: 100%;
     text-align: center;
@@ -121,7 +203,7 @@ div.content {
 #table .main {
     text-align: left;
     width: 60%;
-}
+} */
 
 /* BUTTONS */
 .add-btn {
@@ -166,7 +248,7 @@ div.content {
     justify-content: center;
 }
 .text-center {
-    font-family: 'Sacramento', cursive;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .line {
     padding: 0px 100px;
@@ -240,6 +322,10 @@ input[type=submit]:hover {
     background-color: #ffffff;
     padding: 20px;
 }
+.btn-container {
+    width: 70%;
+    margin: 0 auto; 
+}
 .col-25 {
     float: left;
     width: 25%;
@@ -251,10 +337,9 @@ input[type=submit]:hover {
     margin-top: 6px;
 }
   /* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
+.row-end {
+    display: flex;
+    justify-content: flex-end;
 }
   
   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
@@ -294,3 +379,64 @@ input[type=submit]:hover {
 .bg-white {
     background-color: #fff;
 }
+.grey{
+    color: grey;
+}
+
+/* FOR LOWER SCREEN SIZES */
+@media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: fixed;
+    }
+    .sidebar a {
+        float: left;
+    }
+    .sidebar a.active {
+        border-left: 0px;
+        border-bottom: 3px solid #4CAF50;
+    }
+    div.content {
+        padding-top: 150px;
+        margin-left: 0;
+    }
+    .name-circle {
+        display: none;
+    }
+    .d-none {
+        display: none;
+    }
+    .text-center {
+        font-size: 75%;
+    }
+    .line {
+        padding: 0px 75px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #252525;
+    }
+  }
+  
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+    .sidebar a.active {
+        border-left: 0px;
+        border-bottom: 0px;
+    }
+    div.content {
+        padding-top: 250px;
+        margin-left: 0;
+    }
+    .text-center {
+        font-size: 75%;
+    }
+    .line {
+        padding: 0px 75px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #252525;
+    }
+  }

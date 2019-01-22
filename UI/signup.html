@@ -8,7 +8,7 @@
 
         <link rel="stylesheet" href="assets/css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="shortcut icon" href="#">
+        <link rel="shortcut icon" href="assets/img/favicon.jpg">
 
         <title>Politico| Signin</title>
     </head>
@@ -30,62 +30,33 @@
         <section class="container">
             <div class="row text-center mt-0">
                 <div class="main-info col-100 pt-0">
-                    <h1 class="heading">Welcome back, Fill out the form below to begin using <span class="logo">Politico!</span></h1>
+                    <h1 class="heading">Signup to <span class="logo">Politico!</span></h1>
                 </div>
             </div>
         </section>
 
         <footer class="footer-container-form"> 
-            <div class="footer-item-container">
-                <div style="flex-grow: 3">
-                    <div class="abt-body-accounts">
-                        <span class="fa-stack">
-                            <span class="fa fa-circle-o fa-stack-2x"></span>
-                            <strong class="fa-stack-1x">1</strong>
-                        </span>
-                        <p>Login</p>
-                    </div>
-                </div>
-                <div style="flex-grow: 4">
-                    <div class="abt-body-accounts">
-                        <span class="fa-stack">
-                            <span class="fa fa-circle-o fa-stack-2x"></span>
-                            <strong class="fa-stack-1x">2</strong>
-                        </span>
-                        <p>Make a Report</p>
-                    </div>
-                </div>
-                <div style="flex-grow: 3">
-                    <div class="abt-body-accounts">
-                        <span class="fa-stack">
-                            <span class="fa fa-circle-o fa-stack-2x"></span>
-                            <strong class="fa-stack-1x">3</strong>
-                        </span>
-                        <p>Submit</p>
-                    </div>
-                </div>
-            </div><br>
-            <form class="container">             
-                <div class="form-container">
-                    <label for="fname"><b>First Name</b></label>
-                    <input type="text" placeholder="Enter First Name" name="fname" required>
-                
-                    <label for="lname"><b>Last Name</b></label>
-                    <input type="text" placeholder="Enter Last Name" name="lname" required>
-                
-                    <label for="email"><b>Email Address</b></label>
-                    <input type="email" placeholder="Enter Email Address" name="email" required>
-                
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
-                
-                    <label for="cpsw"><b>Confirm Password</b></label>
-                    <input type="password" placeholder="Confirm Password" name="psw" required>
+                <form class="container" action="userProfile.html">             
+                    <div class="form-container">
+                        <label for="fname"><b>First Name</b></label>
+                        <input type="text" placeholder="Enter First Name" name="fname" required>
+                    
+                        <label for="lname"><b>Last Name</b></label>
+                        <input type="text" placeholder="Enter Last Name" name="lname" required>
+                    
+                        <label for="email"><b>Email Address</b></label>
+                        <input type="email" placeholder="Enter Email Address" name="email" required>
+                    
+                        <label for="psw"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+                    
+                        <label for="cpsw"><b>Confirm Password</b></label>
+                        <input type="password" placeholder="Confirm Password" name="psw" required>
                         
-                    <a href="userProfile.html" class="btn-form">Signup</a>
-                    <p class="text-center">Already have an account? login <a href="signin.html" class="link">here</a></p>
-                </div>
-            </form>
+                        <button class="btn-form" type="submit">Signup</button>
+                        <p class="text-center">Already have an account? login <a href="signin.html" class="link">here</a></p>
+                    </div>
+                </form>
             <div class="footer-container-2">
                 <p>Copyright &copy; 2018, Raymond Akalonu.</p>
             </div>

@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="assets/css/modules/auth.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" href="assets/img/favicon.jpg">
         <title>Politico| party</title>
     </head>
     <body>
@@ -50,98 +51,78 @@
                         </div>
                     </div>
                 </div>
-                <table id="table">
-                    <tr>
-                        <th>Party Id</th>
-                        <th>Name</th>
-                        <th>Head Quarters</th>
-                        <th>Offices</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr>
-                        <td>123456</td>
-                        <td><a href="https://i1.wp.com/www.inecnigeria.org/inec/pix/PDP.jpg?w=573">PDP</a></td>
-                        <td>213, Wilton avenue, Abuja Nigeria</td>
-                        <td class="success">Available</td>
-                        <td>
-                            <a class="btn-action bg-danger" href="#">Delete <span class="pl-1"><i class="far fa-trash-alt"></i></span></a>
-                            <a class="btn-action bg-warning" href="#">Edit <span class="pl-1"><i class="far fa-edit"></i></span></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>223546</td>
-                        <td><a href="https://www.nationsencyclopedia.com/photos/nigeria-political-parties-1437.jpg">Labour Congress</a></td>
-                        <td>458, Sweden Avenue, Abuja Nigeria</td>
-                        <td class="danger">None available for now </td>
-                        <td>
-                            <a class="btn-action bg-danger" href="#">Delete <span class="pl-1"><i class="far fa-trash-alt"></i></span></a>
-                            <a class="btn-action bg-warning" href="#">Edit <span class="pl-1"><i class="far fa-edit"></i></span></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>127895</td>
-                        <td><a href="http://informationng.com/wp-content/uploads/2013/03/apcnewlogo.png">APC</a></td>
-                        <td>458, Maxi Avenue, Abuja Nigeria</td>
-                        <td class="success">Available</td>
-                        <td>
-                            <a class="btn-action bg-danger" href="#">Delete <span class="pl-1"><i class="far fa-trash-alt"></i></span></a>
-                            <a class="btn-action bg-warning" href="#">Edit <span class="pl-1"><i class="far fa-edit"></i></span></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>124558</td>
-                        <td><a href="https://www.nationsencyclopedia.com/photos/nigeria-political-parties-1437.jpg">Labour Party</a></td>
-                        <td>325, kelly Avenue, Abuja Nigeria</td>
-                        <td class="success">Available</td>
-                        <td>
-                            <a class="btn-action bg-danger" href="#">Delete <span class="pl-1"><i class="far fa-trash-alt"></i></span></a>
-                            <a class="btn-action bg-warning" href="#">Edit <span class="pl-1"><i class="far fa-edit"></i></span></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>123456</td>
-                        <td><a href="https://www.nationsencyclopedia.com/photos/nigeria-political-parties-1437.jpg">DPP</a></td>
-                        <td>258, gred Avenue, Abuja Nigeria</td>
-                        <td class="success">Available</td>
-                        <td>
-                            <a class="btn-action bg-danger" href="#">Delete <span class="pl-1"><i class="far fa-trash-alt"></i></span></a>
-                            <a class="btn-action bg-warning" href="#">Edit <span class="pl-1"><i class="far fa-edit"></i></span></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>223546</td>
-                        <td><a href="https://www.nationsencyclopedia.com/photos/nigeria-political-parties-1437.jpg">PPA</a></td>
-                        <td>325, Sweden Avenue, Abuja Nigeria</td>
-                        <td class="danger">None available for now</td>
-                        <td>
-                            <a class="btn-action bg-danger" href="#">Delete <span class="pl-1"><i class="far fa-trash-alt"></i></span></a>
-                            <a class="btn-action bg-warning" href="#">Edit <span class="pl-1"><i class="far fa-edit"></i></span></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>127895</td>
-                        <td><a href="https://www.nationsencyclopedia.com/photos/nigeria-political-parties-1437.jpg">NCP</a></td>
-                        <td>789, Maxi Avenue, Abuja Nigeria</td>
-                        <td class="success">Available</td>
-                        <td>
-                            <a class="btn-action bg-danger" href="#">Delete <span class="pl-1"><i class="far fa-trash-alt"></i></span></a>
-                            <a class="btn-action bg-warning" href="#">Edit <span class="pl-1"><i class="far fa-edit"></i></span></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>124558</td>
-                        <td><a href="https://www.nationsencyclopedia.com/photos/nigeria-political-parties-1437.jpg">APG</a></td>
-                        <td>236, kelly Avenue, Abuja Nigeria</td>
-                        <td class="danger">None available for now</td>
-                        <td>
-                            <a class="btn-action bg-danger" href="#">Delete <span class="pl-1"><i class="far fa-trash-alt"></i></span></a>
-                            <a class="btn-action bg-warning" href="#">Edit <span class="pl-1"><i class="far fa-edit"></i></span></a>
-                        </td>
-                    </tr> 
-                </table>
-                <div class="mt-20">
-                    <a href="office.html"><button class="btn bg-success"><i class="fa fa-plus" aria-hidden="true"></i> Add An Office</button></a>
+
+                <div class="card-group">
+                    <div class="card">
+                        <img class="img-responsive" src="assets/img/PDPlogo.jpg" alt="Party Image" style="width:100%">
+                        <div class="party-info">
+                            <h3>Name: PDP</h3>
+                            <h3>ID: #12231</h3>
+                            <h3>Address: 123, Akintola williams.</h3>
+                        </div>
+
+                        <div class="btn-group">
+                            <div class="modify-btn">
+                                <button class="bg-warning">Edit</button>
+                            </div>
+                            <div class="modify-btn">
+                                <button class="bg-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="card">
+                        <img class="img-responsive" src="assets/img/apclogo.png" alt="Party Image" style="width:100%">
+                        <div class="party-info">
+                            <h3>Name: APC</h3>
+                            <h3>ID: #12231</h3>
+                            <h3>Address: 123, Akintola williams.</h3>
+                        </div>
+
+                        <div class="btn-group">
+                            <div class="modify-btn">
+                                <button class="bg-warning">Edit</button>
+                            </div>
+                            <div class="modify-btn">
+                                <button class="bg-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="card">
+                        <img class="img-responsive" src="assets/img/apgalogo.png" alt="Party Image" style="width:100%">
+                        <div class="party-info">
+                            <h3>Name: APC</h3>
+                            <h3>ID: #12231</h3>
+                            <h3>Address: 123, Akintola williams.</h3>
+                        </div>
+
+                        <div class="btn-group">
+                            <div class="modify-btn">
+                                <button class="bg-warning">Edit</button>
+                            </div>
+                            <div class="modify-btn">
+                                <button class="bg-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="card">
+                        <img class="img-responsive" src="assets/img/ACNlogo.jpg" alt="Party Image" style="width:100%">
+                        <div class="party-info">
+                            <h3>Name: APC</h3>
+                            <h3>ID: #12231</h3>
+                            <h3>Address: 123, Akintola williams.</h3>
+                        </div>
+
+                        <div class="btn-group">
+                            <div class="modify-btn">
+                                <button class="bg-warning">Edit</button>
+                            </div>
+                            <div class="modify-btn">
+                                <button class="bg-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div> 
                 </div>
+
             </div>
             
             <div class="footer">
