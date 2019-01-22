@@ -88,6 +88,15 @@ div.content {
     padding-top: 15px;
     flex: 10%;
 }
+.col-50 {
+    flex: 50%;
+}
+.pt-20 {
+    padding-top: 25px;
+}
+.centered {
+    text-align: center;
+}
 
 /* MAIN CONTENT */
 .content-wrapper {
@@ -369,6 +378,9 @@ input[type=submit]:hover {
 }
 .bg-white {
     background-color: #fff;
+}
+.grey{
+    color: grey;
 }
 
 /* FOR LOWER SCREEN SIZES */
