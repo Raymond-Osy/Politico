@@ -157,6 +157,7 @@ div.content {
 .modify-btn {
     flex: 50%;
     text-align: center;
+    margin: 0 5px;
 }
 .card > p {
     text-align: start;
@@ -171,39 +172,14 @@ div.content {
 }
 .text-center {
     font-family: 'Sacramento', cursive;
+    text-align: center;
+    font-size: 70%;
 }
 .line {
     padding: 0px 100px;
     margin-bottom: 15px;
     border-bottom: 2px solid #252525;
 }
-/* TABLE FOR DASHBOARD */
-/* #table {
-    border-collapse: collapse;
-    width: 100%;
-    text-align: center;
-    margin-top: 50px;
-}
-
-#table td, #table th {
-    border: 1px solid #ddd;
-    padding: 10px;
-}
-
-#table tr:nth-child(even){background-color: #f2f2f2;}
-
-#table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    background-color: #4CAF50;
-    color: white;
-
-}
-#table .main {
-    text-align: left;
-    width: 60%;
-} */
 
 /* BUTTONS */
 .add-btn {
@@ -241,6 +217,12 @@ div.content {
   }
 .mt-20 {
     margin-top: 20px;
+}
+.mt-150 {
+    margin-top: 150px;
+}
+.mt-200 {
+    margin-top: 200px;
 }
 .menu-text {
     display: flex;
@@ -428,7 +410,7 @@ input[type=submit]:hover {
         border-bottom: 0px;
     }
     div.content {
-        padding-top: 250px;
+        padding-top: 350px;
         margin-left: 0;
     }
     .text-center {
@@ -438,5 +420,8 @@ input[type=submit]:hover {
         padding: 0px 75px;
         margin-bottom: 10px;
         border-bottom: 2px solid #252525;
+    }
+    .card {
+        flex: 0 1 100%;
     }
   }
