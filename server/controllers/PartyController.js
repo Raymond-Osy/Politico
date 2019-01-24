@@ -1,10 +1,6 @@
-import express from 'express';
 import parties from '../database/dummydbParties';
 
-const app = express();
-app.use(express.json());
-
-class Parties {
+class PartyController {
   static getAllParties(req, res) {
     if (parties.length === 0) {
       return res.status(404).json({
@@ -12,8 +8,11 @@ class Parties {
         error: 'No Parties available at this time'
       });
     }
-    return res.json({ parties });
+    return res.status(200).json({
+      status: 200,
+      data: parties
+    });
   }
 }
 
-export default Parties;
+export default PartyController;

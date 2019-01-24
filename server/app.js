@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
-import router from './routes/route';
+import router from './routes/index';
 
 // Set up the express app
 const app = express();
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 app.all('/*', (req, res) => {
   res.status(404).send({
     status: '404',
-    message: 'The page you are looking for was not found'
+    message: 'The page you were looking for was not found!'
   });
 });
 

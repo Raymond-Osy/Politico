@@ -1,9 +1,9 @@
 import express from 'express';
-import Parties from '../controllers/parties';
+import PartyController from '../controllers/PartyController';
 
 const {
   getAllParties
-} = Parties;
+} = PartyController;
 
 const partyRouter = express.Router();
 
