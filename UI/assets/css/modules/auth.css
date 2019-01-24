@@ -218,6 +218,9 @@ div.content {
 .mt-20 {
     margin-top: 20px;
 }
+.mt-150 {
+    margin-top: 150px;
+}
 .mt-200 {
     margin-top: 200px;
 }
@@ -407,7 +410,11 @@ input[type=submit]:hover {
         border-bottom: 0px;
     }
     div.content {
+<<<<<<< HEAD
         padding-top: 300px;
+=======
+        padding-top: 350px;
+>>>>>>> 1bcbee6dda31c1c4d62009ac2c5b38f3cf8b685a
         margin-left: 0;
     }
     .text-center {
