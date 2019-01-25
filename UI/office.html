@@ -31,6 +31,23 @@
         </div>
           
           <div class="content">
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Are you sure you want to delete</h2>
+                    </div>
+                    <div class="btn-group">
+                        <div class="modify-btn">
+                            <button id="btn-yes" class="bg-warning confirm">Yes</button>
+                        </div>
+                        <div class="modify-btn">
+                            <button id="btn-no" class="bg-danger confirm">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Main Content -->
             <div class="content-wrapper">
                 <div class="add-btn">
@@ -72,10 +89,10 @@
                         </div>
                         <div class="btn-group">
                             <div class="modify-btn">
-                                <button class="bg-warning">Edit</button>
+                                <a href="editOffice.html"><button class="bg-warning">Edit</button></a>
                             </div>
                             <div class="modify-btn">
-                                <button class="bg-danger">Delete</button>
+                                <button class="bg-danger deleteBtn">Delete</button>
                             </div>
                         </div>
                     </div> 
@@ -109,10 +126,10 @@
                         </div>
                         <div class="btn-group">
                             <div class="modify-btn">
-                                <button class="bg-warning">Edit</button>
+                                <a href="editOffice.html"><button class="bg-warning">Edit</button></a>
                             </div>
                             <div class="modify-btn">
-                                <button class="bg-danger">Delete</button>
+                                <button class="bg-danger deleteBtn">Delete</button>
                             </div>
                         </div>
                     </div> 
@@ -146,10 +163,10 @@
                         </div>
                         <div class="btn-group">
                             <div class="modify-btn">
-                                <button class="bg-warning">Edit</button>
+                                <a href="editOffice.html"><button class="bg-warning">Edit</button></a>
                             </div>
                             <div class="modify-btn">
-                                <button class="bg-danger">Delete</button>
+                                <button class="bg-danger deleteBtn">Delete</button>
                             </div>
                         </div>
                     </div> 
@@ -169,7 +186,7 @@
                                     <label for="type">Type:</label>
                                 </div>
                                 <div class="col-75">
-                                    <p>Loc000al Government</p>
+                                    <p>Local Government</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -183,10 +200,10 @@
                         </div>
                         <div class="btn-group">
                             <div class="modify-btn">
-                                <button class="bg-warning">Edit</button>
+                                <a href="editOffice.html"><button class="bg-warning">Edit</button></a>
                             </div>
                             <div class="modify-btn">
-                                <button class="bg-danger">Delete</button>
+                                <button class="bg-danger deleteBtn">Delete</button>
                             </div>
                         </div>
                     </div> 
@@ -199,6 +216,7 @@
                 <p>Copyright &copy; 2019, Raymond Akalonu.</p>
             </div>
         </div>
+        <script src="assets/js/index.js"></script>
     </body>
 </html>
 
