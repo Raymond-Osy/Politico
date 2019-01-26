@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 
 // Default catch-all route that sends back an error message for wrong routes
 app.all('/*', (req, res) => {
-  res.status(404).send({
+  res.status(404).json({
     status: '404',
     message: 'The page you were looking for was not found!'
   });

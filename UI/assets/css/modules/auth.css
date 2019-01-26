@@ -323,6 +323,71 @@ input[type=submit]:hover {
     display: flex;
     justify-content: flex-end;
 }
+
+/* The Modal*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 250px;
+    padding-left: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 35%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  .confirm {
+      color: #ffffff;
+      border: none;
+      padding: 5px;
+      width: 70px;
+      font-size: 19px;
+  }
+  /* Modal Animation */
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  .close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .modal-header {
+  text-align: center;
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+  }
+  .modal-body {padding: 2px 16px;}
+  
   
   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
@@ -424,4 +489,13 @@ input[type=submit]:hover {
     .card {
         flex: 0 1 100%;
     }
+    .modal {
+        padding-top: 200px;
+        padding-left: 0px;
+      }
+      .confirm {
+          padding: 4px;
+          width: 60px;
+          font-size: 17px;
+      }
   }
