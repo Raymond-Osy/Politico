@@ -61,6 +61,25 @@ class PartyController {
       data: party,
     });
   }
+
+  static editParty(req, res) {
+    const party = parties.find(p => p.id === parseInt(req.params.id));
+    if (!party) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Party with the given Id was not found'
+      });
+    }
+    const partyId = parties.id;
+    party.name = req.body.name;
+    res.status(200).json({
+      status: 200,
+      data: [{
+        id: partyId,
+        party,
+      }]
+    });
+  }
 }
 
 export default PartyController;
