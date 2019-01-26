@@ -29,6 +29,20 @@ class OfficeController {
       data: office,
     });
   }
+
+  static createOffices(req, res) {
+    const office = {
+      id: offices.length === 0 ? 1 : offices.length + 1,
+      type: req.body.type,
+      name: req.body.name
+    };
+
+    offices.push(office);
+    return res.status(201).json({
+      status: 201,
+      data: offices,
+    });
+  }
 }
 
 export default OfficeController;
