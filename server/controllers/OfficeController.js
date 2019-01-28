@@ -4,7 +4,18 @@ import offices from '../database/dummydbOffices';
 const app = express();
 app.use(express.json());
 
+/**
+  * @class OfficeController
+  * @description CRUD operations on offices
+  */
 class OfficeController {
+  /**
+  * @static
+  * @param {object} req - The request payload recieved from the router
+  * @param {object} res - The response payload sent back from the controller
+  * @returns {object} - List of all offices
+  * @memberOf OfficeController
+  */
   static getAllOffices(req, res) {
     if (offices.length === 0) {
       return res.status(404).json({
@@ -15,6 +26,13 @@ class OfficeController {
     return res.json({ offices });
   }
 
+  /**
+  * @static
+  * @param {object} req - The request payload recieved from the router
+  * @param {object} res - The response payload sent back from the controller
+  * @returns {object} - The particular office
+  * @memberOf OfficeController
+  */
   static getAnOfficeById(req, res) {
     const { id } = req.params;
     const office = offices.find(p => p.id === parseInt(req.params.id));
@@ -30,6 +48,13 @@ class OfficeController {
     });
   }
 
+  /**
+  * @static
+  * @param {object} req - The request payload recieved from the router
+  * @param {object} res - The response payload sent back from the controller
+  * @returns {object} - a created office
+  * @memberOf OfficeController
+  */
   static createOffices(req, res) {
     const office = {
       id: offices.length === 0 ? 1 : offices.length + 1,

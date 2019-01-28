@@ -1,6 +1,17 @@
 import parties from '../database/dummydbParties';
 
+/**
+  * @class PartyController
+  * @description CRUD operations on offices
+  */
 class PartyController {
+  /**
+  * @static
+  * @param {object} req - The request payload recieved from the router
+  * @param {object} res - The response payload sent back from the controller
+  * @returns {object} - List of all parties
+  * @memberOf PartyController
+  */
   static getAllParties(req, res) {
     if (parties.length === 0) {
       return res.status(404).json({
@@ -14,6 +25,13 @@ class PartyController {
     });
   }
 
+  /**
+  * @static
+  * @param {object} req - The request payload recieved from the router
+  * @param {object} res - The response payload sent back from the controller
+  * @returns {object} - the created party
+  * @memberOf PartyController
+  */
   static createParty(req, res) {
     const party = {
       id: parties.length === 0 ? 1 : parties.length + 1,
@@ -29,6 +47,13 @@ class PartyController {
     });
   }
 
+  /**
+  * @static
+  * @param {object} req - The request payload recieved from the router
+  * @param {object} res - The response payload sent back from the controller
+  * @returns {object} - The particular party
+  * @memberOf PartyController
+  */
   static getAPartyById(req, res) {
     const { id } = req.params;
     const party = parties.find(p => p.id === parseInt(req.params.id));
@@ -44,6 +69,13 @@ class PartyController {
     });
   }
 
+  /**
+  * @static
+  * @param {object} req - The request payload recieved from the router
+  * @param {object} res - The response payload sent back from the controller
+  * @returns {object} - The particular party deleted
+  * @memberOf PartyController
+  */
   static deleteParty(req, res) {
     const { id } = req.params;
     const party = parties.find(p => p.id === parseInt(req.params.id));
@@ -62,6 +94,13 @@ class PartyController {
     });
   }
 
+  /**
+  * @static
+  * @param {object} req - The request payload recieved from the router
+  * @param {object} res - The response payload sent back from the controller
+  * @returns {object} - The particular party name edited
+  * @memberOf PartyController
+  */
   static editParty(req, res) {
     const party = parties.find(p => p.id === parseInt(req.params.id));
     if (!party) {
