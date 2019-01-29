@@ -1,8 +1,4 @@
-import express from 'express';
 import offices from '../database/dummydbOffices';
-
-const app = express();
-app.use(express.json());
 
 /**
   * @class OfficeController
