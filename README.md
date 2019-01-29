@@ -44,7 +44,7 @@ https://github.com/Raymond-Osy/Politico.git
 ```
 2. Navigate into the cloned repository:
 ```
-cd iReporter
+cd Politico
 ```
 3. Install dependencies.
 ```
