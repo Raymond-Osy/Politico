@@ -1,9 +1,10 @@
 import express from 'express';
 import OfficeController from '../controllers/OfficeController';
 import OfficeVAlidator from '../middleware/OfficeValidator';
+import Authenticator from '../middleware/authenticator';
 
 const {
-  getAllOffices, getAnOfficeById, createOffices
+  createOffice, getAllOffices, getAnOfficeById
 } = OfficeController;
 
 const {
@@ -12,8 +13,8 @@ const {
 
 const officeRouter = express.Router();
 
-officeRouter.get('/', getAllOffices);
-officeRouter.get('/:id', getAnOfficeById);
-officeRouter.post('/', createOfficeValidator, createOffices);
+officeRouter.post('/', createOfficeValidator, Authenticator.isAuthenticated, createOffice);
+officeRouter.get('/', Authenticator.isAuthenticated, getAllOffices);
+officeRouter.get('/:id', Authenticator.isAuthenticated, getAnOfficeById);
 
 export default officeRouter;
