@@ -61,6 +61,43 @@ class OfficeController {
       return res.status(200).json({ status: 200, data: rows[0] });
     });
   }
+
+  /**
+  * @static
+  * @param {object} req - The request payload recieved from the router
+  * @param {object} res - The response payload sent back from the controller
+  * @returns {object} - registered candidate
+  * @memberOf OfficeController
+  */
+  static registerCandidate(req, res) {
+    const { office, party } = req.body;
+
+    // check if user is already registerd
+    db.query(queries.getCandidate, [req.params.userId], (err, data) => {
+      if (err) {
+        return res.json({ status: 500, error: 'Cannot register at the moment' });
+      }
+      const { rowCount } = data;
+      if (rowCount === 0) {
+        db.query(queries.createCandidate, [office, party, req.params.userId], (err, dbRes) => {
+          if (err) {
+            return res.status(400).json({ status: 400, error: err });
+          }
+          const { rows } = dbRes;
+          const candidate = rows[0];
+          return res.status(201).json({
+            status: 201,
+            data: [{
+              office: candidate.office,
+              user: candidate.candidate
+            }]
+          });
+        });
+      } else {
+        return res.json({ status: 409, error: 'Candidate is already registerd' });
+      }
+    });
+  }
 }
 
 export default OfficeController;

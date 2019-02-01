@@ -4,7 +4,7 @@ import OfficeVAlidator from '../middleware/OfficeValidator';
 import Authenticator from '../middleware/authenticator';
 
 const {
-  createOffice, getAllOffices, getAnOfficeById
+  createOffice, getAllOffices, getAnOfficeById, registerCandidate
 } = OfficeController;
 
 const {
@@ -13,8 +13,9 @@ const {
 
 const officeRouter = express.Router();
 
-officeRouter.post('/', createOfficeValidator, Authenticator.isAuthenticated, createOffice);
+officeRouter.post('/', createOfficeValidator, Authenticator.isAuthenticated, Authenticator.isAuthorised, createOffice);
 officeRouter.get('/', Authenticator.isAuthenticated, getAllOffices);
 officeRouter.get('/:id', Authenticator.isAuthenticated, getAnOfficeById);
+officeRouter.post('/:userId/register', Authenticator.isAuthenticated, registerCandidate);
 
 export default officeRouter;
