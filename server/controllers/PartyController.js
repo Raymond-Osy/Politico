@@ -62,6 +62,28 @@ class PartyController {
       return res.status(200).json({ status: 200, data: rows[0] });
     });
   }
+
+  /**
+  * @static
+  * @param {object} req - The request payload recieved from the router
+  * @param {object} res - The response payload sent back from the controller
+  * @returns {object} - The particular party deleted
+  * @memberOf PartyController
+  */
+  static deleteParty(req, res) {
+    db.query(queries.deleteParty, [req.params.id], (err, dbRes) => {
+      if (err) {
+        return res.json({ sucess: false, message: 'Could not Delete entry', err });
+      }
+      if (dbRes.rowCount === 0) {
+        return res.json({ sucess: false, message: `Party with ID ${req.params.id} does not exist`, err });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: `Party with ID ${req.params.id} was successfully deleted`,
+      });
+    });
+  }
 }
 
 export default PartyController;

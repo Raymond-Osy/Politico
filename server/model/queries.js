@@ -8,6 +8,8 @@ const getAnOfficeById = 'SELECT * FROM office WHERE id = $1';
 const getAllParties = 'SELECT * from party';
 const createParty = 'INSERT INTO party(name, hqaddress, logourl) values($1, $2, $3) RETURNING *';
 const getPartyById = 'SELECT * FROM party WHERE id = $1';
+const deleteParty = 'DELETE from party where id = $1';
+
 
 const Queries = {
   insertIntoUsers,
@@ -18,6 +20,7 @@ const Queries = {
   getAllParties,
   createParty,
   getPartyById,
+  deleteParty
 };
 
 export default Queries;
