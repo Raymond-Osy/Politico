@@ -6,6 +6,7 @@ const getAllOffices = 'SELECT * from office';
 const getAnOfficeById = 'SELECT * FROM office WHERE id = $1';
 
 const getAllParties = 'SELECT * from party';
+const createParty = 'INSERT INTO party(name, hqaddress, logourl) values($1, $2, $3) RETURNING *';
 
 
 const Queries = {
@@ -14,7 +15,8 @@ const Queries = {
   createOffice,
   getAllOffices,
   getAnOfficeById,
-  getAllParties
+  getAllParties,
+  createParty,
 };
 
 export default Queries;
