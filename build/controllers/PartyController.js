@@ -6,9 +6,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dummydbParties = require('../database/dummydbParties');
+var _index = require('../model/index');
 
-var _dummydbParties2 = _interopRequireDefault(_dummydbParties);
+var _index2 = _interopRequireDefault(_index);
+
+var _queries = require('../model/queries');
+
+var _queries2 = _interopRequireDefault(_queries);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,15 +38,13 @@ var PartyController = function () {
     * @memberOf PartyController
     */
     value: function getAllParties(req, res) {
-      if (_dummydbParties2.default.length === 0) {
-        return res.status(404).json({
-          status: 404,
-          error: 'No Parties available at this time'
-        });
-      }
-      return res.status(200).json({
-        status: 200,
-        data: _dummydbParties2.default
+      _index2.default.query(_queries2.default.getAllParties, function (err, dbRes) {
+        if (err) {
+          return res.status(400).json({ status: 400, error: err });
+        }
+        var rows = dbRes.rows;
+
+        return res.status(200).json({ status: 200, data: rows });
       });
     }
 
@@ -57,17 +59,20 @@ var PartyController = function () {
   }, {
     key: 'createParty',
     value: function createParty(req, res) {
-      var party = {
-        id: _dummydbParties2.default.length === 0 ? 1 : _dummydbParties2.default.length + 1,
-        name: req.body.name,
-        hqAddress: req.body.hqAddress,
-        logoUrl: req.body.logoUrl
-      };
+      var _req$body = req.body,
+          name = _req$body.name,
+          hqAddress = _req$body.hqAddress,
+          logoUrl = _req$body.logoUrl;
 
-      _dummydbParties2.default.push(party);
-      return res.status(201).send({
-        status: 201,
-        data: _dummydbParties2.default
+
+      _index2.default.query(_queries2.default.createParty, [name, hqAddress, logoUrl], function (err, dbRes) {
+        if (err) {
+          return res.status(400).json({ status: 400, error: err });
+        }
+        var rows = dbRes.rows;
+
+        var office = rows[0];
+        return res.json({ status: 201, data: [{ office: office }] });
       });
     }
 
@@ -82,20 +87,17 @@ var PartyController = function () {
   }, {
     key: 'getAPartyById',
     value: function getAPartyById(req, res) {
-      var id = req.params.id;
+      _index2.default.query(_queries2.default.getPartyById, [req.params.id], function (err, dbRes) {
+        if (err) {
+          return res.status(400).json({ status: 400, error: err });
+        }
+        var rows = dbRes.rows,
+            rowCount = dbRes.rowCount;
 
-      var party = _dummydbParties2.default.find(function (p) {
-        return p.id === parseInt(req.params.id);
-      });
-      if (!party) {
-        return res.status(404).json({
-          status: 404,
-          error: 'Party with the given Id ' + id + ' does not exist'
-        });
-      }
-      return res.status(200).json({
-        status: 200,
-        data: party
+        if (rowCount === 0) {
+          return res.status(404).json({ status: 404, error: 'Party with ID ' + req.params.id + ' does not exist' });
+        }
+        return res.status(200).json({ status: 200, data: rows[0] });
       });
     }
 
@@ -110,23 +112,17 @@ var PartyController = function () {
   }, {
     key: 'deleteParty',
     value: function deleteParty(req, res) {
-      var id = req.params.id;
-
-      var party = _dummydbParties2.default.find(function (p) {
-        return p.id === parseInt(req.params.id);
-      });
-      if (!party) {
-        return res.status(404).json({
-          status: 404,
-          error: 'Party with the given Id ' + id + ' was not found'
+      _index2.default.query(_queries2.default.deleteParty, [req.params.id], function (err, dbRes) {
+        if (err) {
+          return res.json({ sucess: false, message: 'Could not Delete entry', err: err });
+        }
+        if (dbRes.rowCount === 0) {
+          return res.json({ sucess: false, message: 'Party with ID ' + req.params.id + ' does not exist', err: err });
+        }
+        return res.status(200).json({
+          status: 200,
+          data: 'Party with ID ' + req.params.id + ' was successfully deleted'
         });
-      }
-      var index = _dummydbParties2.default.indexOf(party);
-      _dummydbParties2.default.splice(index, 1);
-
-      return res.status(200).json({
-        status: 200,
-        data: party
       });
     }
 
@@ -141,23 +137,20 @@ var PartyController = function () {
   }, {
     key: 'editParty',
     value: function editParty(req, res) {
-      var party = _dummydbParties2.default.find(function (p) {
-        return p.id === parseInt(req.params.id);
-      });
-      if (!party) {
-        return res.status(404).json({
-          status: 404,
-          error: 'Party with the given Id was not found'
+      _index2.default.query(_queries2.default.updateParty, [req.body.name, req.params.id], function (err, dbRes) {
+        if (err) {
+          return res.json({ sucess: false, message: 'Could not update party', err: err });
+        }
+        if (dbRes.rowCount === 0) {
+          return res.json({ sucess: false, message: 'Party with ID ' + req.params.id + ' does not exist', err: err });
+        }
+        return res.json({
+          status: 200,
+          data: {
+            id: req.params.id,
+            name: req.body.name
+          }
         });
-      }
-      var partyId = _dummydbParties2.default.id;
-      party.name = req.body.name;
-      res.status(200).json({
-        status: 200,
-        data: [{
-          id: partyId,
-          party: party
-        }]
       });
     }
   }]);
