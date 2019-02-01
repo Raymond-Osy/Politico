@@ -25,17 +25,18 @@ const createOfficeTable = `CREATE TABLE office(
 )`;
 
 const createCandidateTable = `CREATE TABLE candidate(
-    Id SERIAL PRIMARY KEY,
-    office INTEGER REFERENCES office(Id),
-    party INTEGER REFERENCES party(Id)
+  Id SERIAL PRIMARY KEY,
+  office INTEGER REFERENCES office(id),
+  party INTEGER REFERENCES party(Id),
+  candidate INTEGER UNIQUE REFERENCES users(id)
 )`;
 
 const createVoteTable = `CREATE TABLE vote(
-    Id SERIAL PRIMARY KEY,
-    createdOn TIMESTAMP default current_timestamp,
-    createdBy INT,
-    office INTEGER,
-    candidate INTEGER
+  Id SERIAL PRIMARY KEY,
+  createdOn TIMESTAMP default current_timestamp,
+  createdBy INTEGER UNIQUE  REFERENCES users(id),
+  office INTEGER REFERENCES office(id),
+  candidate INTEGER REFERENCES candidate(id)
 )`;
 
 db.query(createUserTable, (err) => {
