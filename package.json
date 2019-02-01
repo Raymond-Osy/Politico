@@ -7,7 +7,7 @@
     "start": "node build/app.js",
     "postinstall": "babel server -d build",
     "dev": "nodemon --exec babel-node server/app.js",
-    "test": "nyc --reporter=html --reporter=text mocha server/test/*.js --exit --require babel-register || true",
+    "test": "npm run reset-tables && nyc --reporter=html --reporter=text mocha server/test/*.js --exit --require babel-register || true",
     "coveralls": "nyc --reporter=lcov --reporter=text npm test",
     "coverage": "nyc report  --reporter=html  --reporter=text-lcov | coveralls",
     "reset-tables": "npm run drop-tables && npm run create-tables",

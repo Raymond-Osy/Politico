@@ -72,7 +72,7 @@ class OfficeController {
   static registerCandidate(req, res) {
     const { office, party } = req.body;
 
-    // check if user is already registerd
+    // check if user is already registered
     db.query(queries.getCandidate, [req.params.userId], (err, data) => {
       if (err) {
         return res.json({ status: 500, error: 'Cannot register at the moment' });

@@ -1,11 +1,199 @@
 import chaiHttp from 'chai-http';
 import chai, { expect } from 'chai';
 import app from '../app';
-
+/* eslint-disable prefer-destructuring */
 /* eslint-disable no-unused-vars */
 const should = chai.should();
+let token = '';
+let userId;
+let partyId;
+let officeId;
 
 chai.use(chaiHttp);
+
+const user = {
+  email: 'johndoe@yahoo.cofmr4',
+  firstname: 'john',
+  lastname: 'doe',
+  othernames: 'james',
+  passportUrl: 'passportUrl',
+  phoneNumber: 'passportUrl',
+  password: 'secret',
+  confirmPassword: 'secret'
+};
+
+describe('Users', () => {
+  before((done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send(user)
+      .end((err, res) => {
+        token = res.body.data[0].token;
+        userId = res.body.data[0].user.id;
+        done();
+      });
+  });
+
+  it('Should return Invalid credentials', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login').send(user)
+      .end((err, res) => {
+        expect(res.body).to.have.status(200);
+        done();
+      });
+  });
+});
+
+describe('Office', () => {
+  const office = {
+    type: 'Local Government',
+    name: 'Vice Counselour'
+  };
+
+  it('should add a new office to the database', (done) => {
+    chai.request(app)
+      .post('/api/v1/offices/')
+      .send(office)
+      .set('x-access-token', token)
+      .end((err, res) => {
+        officeId = res.body.data[0].office.id;
+        expect(res).to.have.status(201);
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+
+  it('should get all offices', (done) => {
+    chai.request(app)
+      .get('/api/v1/offices/')
+      .set('x-access-token', token)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+
+  it('should get a single office', (done) => {
+    chai.request(app)
+      .get(`/api/v1/offices/${officeId}`)
+      .set('x-access-token', token)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+});
+
+describe('Parties', () => {
+  const party = {
+    name: 'APC',
+    hqAddress: '123 williams Akins, Lagos, Nigeria',
+    logoUrl: 'Image Url 1 goes here'
+  };
+
+  it('should add a new party to the database', (done) => {
+    chai.request(app)
+      .post('/api/v1/parties/')
+      .send(party)
+      .set('x-access-token', token)
+      .end((err, res) => {
+        partyId = res.body.data[0].party.id;
+        expect(res).to.have.status(201);
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+
+  it('should get all parties', (done) => {
+    chai.request(app)
+      .get('/api/v1/parties/')
+      .set('x-access-token', token)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+
+  it('should get a single office', (done) => {
+    chai.request(app)
+      .get(`/api/v1/parties/${partyId}`)
+      .set('x-access-token', token)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+
+  it('should modify a party name', (done) => {
+    chai.request(app)
+      .patch(`/api/v1/parties/${partyId}/name`)
+      .send({ name: 'PDP' })
+      .set('x-access-token', token)
+      .end((err, res) => {
+        expect(res.body).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+
+  it('should delete a single office', (done) => {
+    chai.request(app)
+      .delete(`/api/v1/parties/${partyId}`)
+      .set('x-access-token', token)
+      .end((err, res) => {
+        expect(res.body).to.have.status(200);
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+});
+
+describe('Candidate', () => {
+  before((done) => {
+    chai.request(app)
+      .post('/api/v1/parties/')
+      .send({
+        name: 'APC',
+        hqAddress: '123 williams Akins, Lagos, Nigeria',
+        logoUrl: 'imageUrl'
+      })
+      .set('x-access-token', token)
+      .end((err, res) => {
+        partyId = res.body.data[0].party.id;
+        expect(res).to.have.status(201);
+        expect(res.body).to.be.an('object');
+      });
+    chai.request(app)
+      .post('/api/v1/offices/')
+      .send({
+        type: 'Local Government',
+        name: 'Vice Counselour'
+      })
+      .set('x-access-token', token)
+      .end((err, res) => {
+        officeId = res.body.data[0].office.id;
+        expect(res).to.have.status(201);
+        expect(res.body).to.be.an('object');
+        done();
+      });
+  });
+
+  it('Register a candidate', (done) => {
+    chai.request(app)
+      .post(`/api/v1/offices/${userId}/register`)
+      .send({ office: officeId, party: partyId })
+      .set('x-access-token', token)
+      .end((err, res) => {
+        console.log(res, '___________________________-');
+        expect(res.body).to.have.status(201);
+        done();
+      });
+  });
+});
 
 describe('Get a non-existing url/page', () => {
   it('Should return a 404 response for unknown routes', (done) => {
@@ -18,123 +206,34 @@ describe('Get a non-existing url/page', () => {
   });
 });
 
-/*
-* Test for all the routes under /PARTIES
-*/
-describe('All requests to /Parties', () => {
-  describe('/GET/ party', () => {
-    it('Should return response 200', (done) => {
-      chai.request(app)
-        .get('/api/v1/parties')
-        .end((err, res) => {
-          expect(res).to.have.status(200);
-          expect(res).to.be.an('object');
-          done();
-        });
-    });
-  });
-
-  describe('/GET/:id party', () => {
-    it('should return response 200', (done) => {
-      chai.request(app)
-        .get('/api/v1/parties/1')
-        .end((err, res) => {
-          expect(res).to.have.status(200);
-          expect(res).to.be.an('object');
-          done();
-        });
-    });
-  });
-
-  describe('/POST party', () => {
-    const party = {
-      id: 1,
-      name: 'APC',
-      hqAddress: '123 williams Akins, Lagos, Nigeria',
-      logoUrl: 'Image Url 1 goes here'
-    };
-    it('should add a new party to the database', (done) => {
-      chai.request(app)
-        .post('/api/v1/parties/')
-        .send(party)
-        .end((err, res) => {
-          expect(res).to.have.status(201);
-          expect(res.body).to.be.an('object');
-          done();
-        });
-    });
-  });
-
-  describe('/DELETE/:id party', () => {
-    it('should add a new party to the database', (done) => {
-      chai.request(app)
-        .delete('/api/v1/parties/1')
-        .end((err, res) => {
-          expect(res).to.have.status(200);
-          expect(res.body).to.be.an('object');
-          done();
-        });
-    });
-  });
-
-  describe('/PATCH/:id/name', () => {
-    it('should edit the name for a particular party', (done) => {
-      chai.request(app)
-        .patch('/api/v1/parties/3/name')
-        .send({ name: 'new name' })
-        .end((err, res) => {
-          expect(res).to.have.status(200);
-          expect(res).to.be.an('object');
-          done();
-        });
-    });
+describe('Hit the welcome route', () => {
+  it('Should hit the welcome Route', (done) => {
+    chai.request(app)
+      .get('/')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
   });
 });
 
-
-/*
-* Test for all the routes under /OFFICES
-*/
-describe('All requests to /offices', () => {
-  describe('/GET/ office', () => {
-    it('Should return response 200', (done) => {
-      chai.request(app)
-        .get('/api/v1/offices')
-        .end((err, res) => {
-          expect(res).to.have.status(200);
-          expect(res).to.be.an('object');
-          done();
-        });
-    });
+describe('Authentication', () => {
+  it('Should return a 403 error response for invalid token', (done) => {
+    chai.request(app)
+      .get('/api/v1/offices/')
+      .set('x-access-token', 'invalid-token')
+      .end((err, res) => {
+        expect(res).to.have.status(403);
+        done();
+      });
   });
 
-  describe('/GET/:id office', () => {
-    it('should return response 200', (done) => {
-      chai.request(app)
-        .get('/api/v1/offices/1')
-        .end((err, res) => {
-          expect(res).to.have.status(200);
-          expect(res).to.be.an('object');
-          done();
-        });
-    });
-  });
-
-  describe('/POST office', () => {
-    const office = {
-      id: 1,
-      type: 'Local Government',
-      name: 'Vice Counselour'
-    };
-    it('should add a new office to the database', (done) => {
-      chai.request(app)
-        .post('/api/v1/offices/')
-        .send(office)
-        .end((err, res) => {
-          expect(res).to.have.status(201);
-          expect(res.body).to.be.an('object');
-          done();
-        });
-    });
+  it('Should return a 403 error response for missing token', (done) => {
+    chai.request(app)
+      .get('/api/v1/offices/')
+      .end((err, res) => {
+        expect(res).to.have.status(403);
+        done();
+      });
   });
 });
