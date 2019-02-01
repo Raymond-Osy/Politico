@@ -3,7 +3,7 @@ import PartyController from '../controllers/PartyController';
 import PartyValidator from '../middleware/PartyValidator';
 
 const {
-  getAllParties, createParty, getAPartyById, deleteParty
+  getAllParties, createParty, getAPartyById, deleteParty, editParty
 } = PartyController;
 
 const {
@@ -17,6 +17,7 @@ partyRouter.get('/', getAllParties);
 partyRouter.post('/', createPartyValidator, createParty);
 partyRouter.get('/:id', getAPartyById);
 partyRouter.delete('/:id', deleteParty);
+partyRouter.patch('/:id/name', editParty);
 
 
 export default partyRouter;
