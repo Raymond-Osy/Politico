@@ -33,8 +33,7 @@ describe('Users', () => {
         done();
       });
   });
-
-  it('Should return Invalid credentials', (done) => {
+  it('Should login a user', (done) => {
     chai.request(app)
       .post('/api/v1/auth/login').send(user)
       .end((err, res) => {
@@ -100,7 +99,7 @@ describe('Parties', () => {
       .set('x-access-token', token)
       .end((err, res) => {
         partyId = res.body.data[0].party.id;
-        expect(res).to.have.status(201);
+        expect(res.body).to.have.status(201);
         expect(res.body).to.be.an('object');
         done();
       });
@@ -117,7 +116,7 @@ describe('Parties', () => {
       });
   });
 
-  it('should get a single office', (done) => {
+  it('should get a single party', (done) => {
     chai.request(app)
       .get(`/api/v1/parties/${partyId}`)
       .set('x-access-token', token)
@@ -140,7 +139,7 @@ describe('Parties', () => {
       });
   });
 
-  it('should delete a single office', (done) => {
+  it('should delete a single delete', (done) => {
     chai.request(app)
       .delete(`/api/v1/parties/${partyId}`)
       .set('x-access-token', token)
@@ -164,7 +163,7 @@ describe('Candidate', () => {
       .set('x-access-token', token)
       .end((err, res) => {
         partyId = res.body.data[0].party.id;
-        expect(res).to.have.status(201);
+        expect(res.body).to.have.status(201);
         expect(res.body).to.be.an('object');
       });
     chai.request(app)
@@ -176,7 +175,7 @@ describe('Candidate', () => {
       .set('x-access-token', token)
       .end((err, res) => {
         officeId = res.body.data[0].office.id;
-        expect(res).to.have.status(201);
+        expect(res.body).to.have.status(201);
         expect(res.body).to.be.an('object');
         done();
       });
@@ -188,7 +187,6 @@ describe('Candidate', () => {
       .send({ office: officeId, party: partyId })
       .set('x-access-token', token)
       .end((err, res) => {
-        console.log(res, '___________________________-');
         expect(res.body).to.have.status(201);
         done();
       });

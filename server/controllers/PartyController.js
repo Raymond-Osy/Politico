@@ -38,8 +38,8 @@ class PartyController {
         return res.status(400).json({ status: 400, error: err });
       }
       const { rows } = dbRes;
-      const office = rows[0];
-      return res.json({ status: 201, data: [{ office }] });
+      const party = rows[0];
+      return res.json({ status: 201, data: [{ party }] });
     });
   }
 
