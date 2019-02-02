@@ -25,46 +25,48 @@ const createOfficeTable = `CREATE TABLE office(
 )`;
 
 const createCandidateTable = `CREATE TABLE candidate(
-  Id SERIAL PRIMARY KEY,
-  office INTEGER REFERENCES office(id),
-  party INTEGER REFERENCES party(Id),
-  candidate INTEGER UNIQUE REFERENCES users(id)
+    Id SERIAL PRIMARY KEY,
+    office INTEGER REFERENCES office(id),
+    party INTEGER REFERENCES party(Id),
+    candidate INTEGER UNIQUE REFERENCES users(id)
 )`;
 
 const createVoteTable = `CREATE TABLE vote(
-  Id SERIAL PRIMARY KEY,
-  createdOn TIMESTAMP default current_timestamp,
-  createdBy INTEGER UNIQUE  REFERENCES users(id),
-  office INTEGER REFERENCES office(id),
-  candidate INTEGER REFERENCES candidate(id)
+    Id SERIAL PRIMARY KEY,
+    createdOn TIMESTAMP default current_timestamp,
+    createdBy INTEGER REFERENCES users(id),
+    office INTEGER REFERENCES office(id),
+    candidate INTEGER REFERENCES candidate(id)
 )`;
 
 db.query(createUserTable, (err) => {
   if (err) {
     console.log(`could not create user table ${err}`);
-  }
-});
-
-db.query(createPartyTable, (err) => {
-  if (err) {
-    console.log(`could not create party table ${err}`);
-  }
-});
-
-db.query(createOfficeTable, (err) => {
-  if (err) {
-    console.log(`could not create office table ${err}`);
-  }
-});
-
-db.query(createCandidateTable, (err) => {
-  if (err) {
-    console.log(`could not create candidate table ${err}`);
-  }
-});
-
-db.query(createVoteTable, (err) => {
-  if (err) {
-    console.log(`could not create vote table ${err}`);
+  } else {
+    db.query(createPartyTable, (err) => {
+      if (err) {
+        console.log(`could not create party table ${err}`);
+      } else {
+        db.query(createOfficeTable, (err) => {
+          if (err) {
+            console.log(`could not create office table ${err}`);
+          } else {
+            db.query(createCandidateTable, (err) => {
+              if (err) {
+                console.log(`could not create candidate table ${err}`);
+              } else {
+                db.query(createVoteTable, (err) => {
+                  if (err) {
+                    console.log(`could not create vote table ${err}`);
+                  } else {
+                    console.log('successfully created tables');
+                  }
+                });
+              }
+            });
+          }
+        });
+      }
+    });
   }
 });

@@ -13,7 +13,7 @@ const {
 
 const officeRouter = express.Router();
 
-officeRouter.post('/', createOfficeValidator, Authenticator.isAuthenticated, Authenticator.isAuthorised, createOffice);
+officeRouter.post('/', createOfficeValidator, Authenticator.isAuthenticated, createOffice);
 officeRouter.get('/', Authenticator.isAuthenticated, getAllOffices);
 officeRouter.get('/:id', Authenticator.isAuthenticated, getAnOfficeById);
 officeRouter.post('/:userId/register', Authenticator.isAuthenticated, registerCandidate);

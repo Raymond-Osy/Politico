@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/Raymond-Osy/Politico.svg?branch=develop)](https://travis-ci.com/Raymond-Osy/Politico)
 [![Coverage Status](https://coveralls.io/repos/github/Raymond-Osy/Politico/badge.svg?branch=develop)](https://coveralls.io/github/Raymond-Osy/Politico?branch=develop)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a9e97da306eeb1a2f7cd/maintainability)](https://codeclimate.com/github/Raymond-Osy/Politico/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a9e97da306eeb1a2f7cd/test_coverage)](https://codeclimate.com/github/Raymond-Osy/Politico/test_coverage)
 
 Politico is a web app where citizens can vote in, express a desire to context for an office or give mandate to a politician that is running for a governmental office.
 
