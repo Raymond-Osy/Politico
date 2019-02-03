@@ -14,6 +14,9 @@ const updateParty = 'UPDATE party SET name = $1 WHERE id = $2';
 const getCandidate = 'SELECT * FROM candidate WHERE candidate = $1';
 const createCandidate = 'INSERT INTO candidate(office, party, candidate) values($1, $2, $3) RETURNING *';
 
+const createVote = 'INSERT INTO vote(createdby, candidate, office) values($1, $2, $3) RETURNING *';
+const checkIfVoteExists = 'SELECT * from vote where createdby = $1 and office = $2';
+
 const Queries = {
   insertIntoUsers,
   queryUsers,
@@ -26,7 +29,9 @@ const Queries = {
   deleteParty,
   updateParty,
   getCandidate,
-  createCandidate
+  createCandidate,
+  createVote,
+  checkIfVoteExists
 };
 
 export default Queries;

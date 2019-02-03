@@ -17,7 +17,7 @@ class OfficeController {
     const { type, name } = req.body;
     db.query(queries.createOffice, [type, name], (err, dbRes) => {
       if (err) {
-        return res.status(400).json({ status: 400, error: err });
+        return res.status(500).json({ status: 500, error: err });
       }
       const { rows } = dbRes;
       const office = rows[0];
@@ -35,7 +35,7 @@ class OfficeController {
   static getAllOffices(req, res) {
     db.query(queries.getAllOffices, (err, dbRes) => {
       if (err) {
-        return res.status(400).json({ status: 400, error: err });
+        return res.status(500).json({ status: 500, error: err });
       }
       const { rows } = dbRes;
       return res.status(200).json({ status: 200, data: rows });
@@ -52,7 +52,7 @@ class OfficeController {
   static getAnOfficeById(req, res) {
     db.query(queries.getAnOfficeById, [req.params.id], (err, dbRes) => {
       if (err) {
-        return res.status(400).json({ status: 400, error: err });
+        return res.status(500).json({ status: 500, error: err });
       }
       const { rows, rowCount } = dbRes;
       if (rowCount === 0) {
@@ -78,10 +78,11 @@ class OfficeController {
         return res.json({ status: 500, error: 'Cannot register at the moment' });
       }
       const { rowCount } = data;
+      // checks the candidate table to see if there is candidate
       if (rowCount === 0) {
         db.query(queries.createCandidate, [office, party, req.params.userId], (err, dbRes) => {
           if (err) {
-            return res.status(400).json({ status: 400, error: err });
+            return res.status(500).json({ status: 500, error: err });
           }
           const { rows } = dbRes;
           const candidate = rows[0];

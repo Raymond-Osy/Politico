@@ -1,3 +1,5 @@
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable func-names */
 import chaiHttp from 'chai-http';
 import chai, { expect } from 'chai';
 import app from '../app';
@@ -12,17 +14,18 @@ let officeId;
 chai.use(chaiHttp);
 
 const user = {
-  email: 'johndoe@yahoo.cofmr4',
+  email: 'johndoe@yahoo.com',
   firstname: 'john',
   lastname: 'doe',
   othernames: 'james',
   passportUrl: 'passportUrl',
-  phoneNumber: 'passportUrl',
+  phoneNumber: 8065968899,
   password: 'secret',
   confirmPassword: 'secret'
 };
 
-describe('Users', () => {
+describe('Users', function () {
+  this.timeout(10000);
   before((done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
@@ -151,7 +154,8 @@ describe('Parties', () => {
   });
 });
 
-describe('Candidate', () => {
+describe('Candidate', function () {
+  this.timeout(10000);
   before((done) => {
     chai.request(app)
       .post('/api/v1/parties/')
