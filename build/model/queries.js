@@ -19,6 +19,9 @@ var updateParty = 'UPDATE party SET name = $1 WHERE id = $2';
 var getCandidate = 'SELECT * FROM candidate WHERE candidate = $1';
 var createCandidate = 'INSERT INTO candidate(office, party, candidate) values($1, $2, $3) RETURNING *';
 
+var createVote = 'INSERT INTO vote(createdby, candidate, office) values($1, $2, $3) RETURNING *';
+var checkIfVoteExists = 'SELECT * from vote where createdby = $1 and office = $2';
+
 var Queries = {
   insertIntoUsers: insertIntoUsers,
   queryUsers: queryUsers,
@@ -31,7 +34,9 @@ var Queries = {
   deleteParty: deleteParty,
   updateParty: updateParty,
   getCandidate: getCandidate,
-  createCandidate: createCandidate
+  createCandidate: createCandidate,
+  createVote: createVote,
+  checkIfVoteExists: checkIfVoteExists
 };
 
 exports.default = Queries;

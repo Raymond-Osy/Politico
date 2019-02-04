@@ -44,7 +44,7 @@ var OfficeController = function () {
 
       _index2.default.query(_queries2.default.createOffice, [type, name], function (err, dbRes) {
         if (err) {
-          return res.status(400).json({ status: 400, error: err });
+          return res.status(500).json({ status: 500, error: err });
         }
         var rows = dbRes.rows;
 
@@ -66,7 +66,7 @@ var OfficeController = function () {
     value: function getAllOffices(req, res) {
       _index2.default.query(_queries2.default.getAllOffices, function (err, dbRes) {
         if (err) {
-          return res.status(400).json({ status: 400, error: err });
+          return res.status(500).json({ status: 500, error: err });
         }
         var rows = dbRes.rows;
 
@@ -87,7 +87,7 @@ var OfficeController = function () {
     value: function getAnOfficeById(req, res) {
       _index2.default.query(_queries2.default.getAnOfficeById, [req.params.id], function (err, dbRes) {
         if (err) {
-          return res.status(400).json({ status: 400, error: err });
+          return res.status(500).json({ status: 500, error: err });
         }
         var rows = dbRes.rows,
             rowCount = dbRes.rowCount;
@@ -114,18 +114,19 @@ var OfficeController = function () {
           office = _req$body2.office,
           party = _req$body2.party;
 
-      // check if user is already registerd
+      // check if user is already registered
 
       _index2.default.query(_queries2.default.getCandidate, [req.params.userId], function (err, data) {
         if (err) {
           return res.json({ status: 500, error: 'Cannot register at the moment' });
         }
         var rowCount = data.rowCount;
+        // checks the candidate table to see if there is candidate
 
         if (rowCount === 0) {
           _index2.default.query(_queries2.default.createCandidate, [office, party, req.params.userId], function (err, dbRes) {
             if (err) {
-              return res.status(400).json({ status: 400, error: err });
+              return res.status(500).json({ status: 500, error: err });
             }
             var rows = dbRes.rows;
 
