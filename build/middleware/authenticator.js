@@ -30,7 +30,6 @@ exports.default = {
           return res.status(403).json({ message: 'Invalid token supplied' });
         }
         req.user = decoded.user;
-
         next();
       });
     }

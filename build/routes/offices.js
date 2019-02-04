@@ -31,7 +31,7 @@ var createOfficeValidator = _OfficeValidator2.default.createOfficeValidator;
 
 var officeRouter = _express2.default.Router();
 
-officeRouter.post('/', createOfficeValidator, _authenticator2.default.isAuthenticated, _authenticator2.default.isAuthorised, createOffice);
+officeRouter.post('/', createOfficeValidator, _authenticator2.default.isAuthenticated, createOffice);
 officeRouter.get('/', _authenticator2.default.isAuthenticated, getAllOffices);
 officeRouter.get('/:id', _authenticator2.default.isAuthenticated, getAnOfficeById);
 officeRouter.post('/:userId/register', _authenticator2.default.isAuthenticated, registerCandidate);

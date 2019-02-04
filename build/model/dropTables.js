@@ -15,29 +15,31 @@ var dropVoteTable = 'DROP TABLE IF EXISTS vote CASCADE;';
 _index2.default.query(dropUserTable, function (err) {
   if (err) {
     console.log('could not drop user table ' + err);
-  }
-});
-
-_index2.default.query(dropPartyTable, function (err) {
-  if (err) {
-    console.log('could not drop party table ' + err);
-  }
-});
-
-_index2.default.query(dropOfficeTable, function (err) {
-  if (err) {
-    console.log('could not drop office table ' + err);
-  }
-});
-
-_index2.default.query(dropCandidateTable, function (err) {
-  if (err) {
-    console.log('could not drop candidate table ' + err);
-  }
-});
-
-_index2.default.query(dropVoteTable, function (err) {
-  if (err) {
-    console.log('could not drop vote table ' + err);
+  } else {
+    _index2.default.query(dropPartyTable, function (err) {
+      if (err) {
+        console.log('could not drop party table ' + err);
+      } else {
+        _index2.default.query(dropOfficeTable, function (err) {
+          if (err) {
+            console.log('could not drop office table ' + err);
+          } else {
+            _index2.default.query(dropCandidateTable, function (err) {
+              if (err) {
+                console.log('could not drop candidate table ' + err);
+              } else {
+                _index2.default.query(dropVoteTable, function (err) {
+                  if (err) {
+                    console.log('could not drop vote table ' + err);
+                  } else {
+                    console.log('tables where successfully droped');
+                  }
+                });
+              }
+            });
+          }
+        });
+      }
+    });
   }
 });
