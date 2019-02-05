@@ -16,7 +16,7 @@ class PartyController {
   static getAllParties(req, res) {
     db.query(queries.getAllParties, (err, dbRes) => {
       if (err) {
-        return res.status(500).json({ status: 500, error: err });
+        return res.status(500).json({ status: 500, error: 'Can not get all parties at the moment, Try again later' });
       }
       const { rows } = dbRes;
       return res.status(200).json({ status: 200, data: rows });
@@ -35,7 +35,7 @@ class PartyController {
 
     db.query(queries.createParty, [name, hqAddress, logoUrl], (err, dbRes) => {
       if (err) {
-        return res.status(500).json({ status: 500, error: err });
+        return res.status(500).json({ status: 500, error: 'Can not create party at the moment, Try again later' });
       }
       const { rows } = dbRes;
       const party = rows[0];
@@ -53,7 +53,7 @@ class PartyController {
   static getAPartyById(req, res) {
     db.query(queries.getPartyById, [req.params.id], (err, dbRes) => {
       if (err) {
-        return res.status(500).json({ status: 500, error: err });
+        return res.status(500).json({ status: 500, error: 'Can not get party at the moment, Try again later' });
       }
       const { rows, rowCount } = dbRes;
       if (rowCount === 0) {
@@ -73,7 +73,7 @@ class PartyController {
   static deleteParty(req, res) {
     db.query(queries.deleteParty, [req.params.id], (err, dbRes) => {
       if (err) {
-        return res.json({ status: 500, error: 'Could not Delete entry', err });
+        return res.json({ status: 500, error: 'Could not Delete entry, try again later.' });
       }
       if (dbRes.rowCount === 0) {
         return res.json({ status: 404, message: `Party with ID ${req.params.id} does not exist`, err });
@@ -95,7 +95,7 @@ class PartyController {
   static editParty(req, res) {
     db.query(queries.updateParty, [req.body.name, req.params.id], (err, dbRes) => {
       if (err) {
-        return res.json({ status: 500, message: 'Could not update party', err });
+        return res.json({ status: 500, message: 'Could not update party, try again later' });
       }
       if (dbRes.rowCount === 0) {
         return res.json({ status: 404, message: `Party with ID ${req.params.id} does not exist`, err });

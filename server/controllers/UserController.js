@@ -46,7 +46,6 @@ class UserController {
     const { email, password } = req.body;
 
     db.query(queries.queryUsers, [email, password], (err, dbRes) => {
-      console.log(err, '================================');
       if (err) {
         return res.json({
           status: 500,

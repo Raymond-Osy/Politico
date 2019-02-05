@@ -21,15 +21,16 @@
 }
 input[type=email], input[type=password], input[type=text] {
     width: 100%;
-    padding: 12px 20px;
+    padding: 9px 17px;
     margin-top: 15px;
     margin-bottom: 25px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    font-size: 15px;
 }
 .btn-form {
-    background-color: #4CAF50;
+    background-color: #2f7a17;
     border: none;
     border-radius: 3px;
     font-size: 20px;
@@ -44,7 +45,7 @@ input[type=email], input[type=password], input[type=text] {
     margin-right: auto;
 }
 .link {
-    color: #4CAF50;
+    color: #2f7a17;
     text-decoration: none;
 }
 .gs-link {
@@ -58,15 +59,15 @@ input[type=email], input[type=password], input[type=text] {
     align-items: center;
     padding: 10px;
     font-size: 20px;
-    color: #4CAF50;
+    color: #2f7a17;
 }
 .footer-container {
-    background-color: #4CAF50;
+    background-color: #2f7a17;
     color: #fff;
 }
 .footer-container-form {
     background-color: #fff;
-    color: #4CAF50;
+    color: #2f7a17;
 }
 .footer-container-2 {
     display: flex;

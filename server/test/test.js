@@ -17,7 +17,7 @@ const user = {
   email: 'johndoe@yahoo.com',
   firstname: 'john',
   lastname: 'doe',
-  othernames: 'james',
+  othername: 'james',
   passportUrl: 'passportUrl',
   phoneNumber: 8065968899,
   password: 'secret',
