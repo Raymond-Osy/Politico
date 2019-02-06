@@ -26,14 +26,14 @@ body {
     text-decoration: none;
 }
 .sidebar a.active {
-    border-left: 3px solid #4CAF50;
+    border-left: 3px solid #2f7a17;
     background-color: #F1F2F2;
     transition: background-color 0.5s;
-    color: #4CAF50;
+    color: #2f7a17;
 }
 .sb-links a:hover {
     background-color: #F1F2F2;
-    color: #4CAF50;
+    color: #2f7a17;
 }
 .link {
     color: #000;
@@ -68,7 +68,7 @@ div.content {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #4CAF50;
+    background-color: #2f7a17;
     border-radius: 50%;
     color: #ffffff;
 }
@@ -173,7 +173,6 @@ div.content {
 .text-center {
     font-family: 'Sacramento', cursive;
     text-align: center;
-    font-size: 70%;
 }
 .line {
     padding: 0px 100px;
@@ -223,6 +222,15 @@ div.content {
 }
 .mt-200 {
     margin-top: 200px;
+}
+.pt-150 {
+    padding-top: 150px;
+}
+.mr-80 {
+    margin-right: 80px;
+}
+.ml-20 {
+    margin-left: 230px;
 }
 .menu-text {
     display: flex;
@@ -286,7 +294,7 @@ label {
     display: inline-block;
 } 
 input[type=submit] {
-    background-color: #4CAF50;
+    background-color: #2f7a17;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -400,22 +408,22 @@ input[type=submit]:hover {
 
 /* COLORS*/
 .danger {
-    color: #d50000;
+    color: #ff7171;
 }
 .bg-danger {
-    background-color: #d50000;
+    background-color: #ff7171;
 }
 .warning {
-    color: #ffa100;
+    color: #ffbd00;
 }
 .bg-warning {
-    background-color: #ffa100;
+    background-color: #ffbd00;
 }
 .success {
-    color: #4CAF50;
+    color: #2f7a17;
 }
 .bg-success {
-    background-color: #4CAF50;
+    background-color: #2f7a17;
 }
 .cool {
     color: #007bff;
@@ -442,7 +450,7 @@ input[type=submit]:hover {
     }
     .sidebar a.active {
         border-left: 0px;
-        border-bottom: 3px solid #4CAF50;
+        border-bottom: 3px solid #2f7a17;
     }
     div.content {
         padding-top: 150px;

@@ -13,7 +13,7 @@ export default {
       res.status(403)
         .json({
           success: false,
-          message: 'Missing Token'
+          message: 'Missing x-access-token in the request header'
         });
     } else {
       jwt.verify(token, process.env.JWTKEY, (err, decoded) => {
@@ -32,7 +32,7 @@ export default {
       res.status(403)
         .json({
           success: false,
-          message: 'Missing Token'
+          message: 'Missing x-access-token in the request header'
         });
     } else {
       jwt.verify(token, process.env.JWTKEY, (err, decoded) => {

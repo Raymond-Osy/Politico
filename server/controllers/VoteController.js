@@ -16,11 +16,10 @@ class VoteController {
   static createVote(req, res) {
     const { candidate, office } = req.body;
     const createdBy = req.user.id;
-    // check if user is already voted for this office
+    // check if user has already voted for this office
     db.query(queries.checkIfVoteExists, [createdBy, office], (err, data) => {
       if (err) {
-        console.log(err, '>>>>>>>>>>>>>>>>>>');
-        return res.json({ status: 500, error: 'Cannot vote at the moment' });
+        return res.json({ status: 500, error: 'Cannot vote at the moment, Try again later.' });
       }
       const { rowCount } = data;
       if (rowCount === 0) {

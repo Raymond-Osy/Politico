@@ -68,7 +68,7 @@ nav h1 {
 
 /* Main section elements */
 .logo {
-    color: #4CAF50;
+    color:  #2f7a17;
     font-weight: bold;
 }
 .main-info h1 {
@@ -83,7 +83,7 @@ nav h1 {
 }
 .main-info a {
     display: inline-block;
-    background-color: #4CAF50;
+    background-color:  #2f7a17;
     border: none;
     color: #FFFFFF;
     text-align: center;
@@ -119,7 +119,7 @@ nav h1 {
 
 /* Footer contents */
 .footer-container {
-    background-color:#4CAF50;
+    background-color: #2f7a17;
     color: #fff;
 }
 .footer-item-container {

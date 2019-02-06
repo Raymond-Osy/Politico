@@ -19,12 +19,6 @@ class OfficeValidator {
           error: 'Name must contain letters only'
         });
       }
-      if (name.length > 30) {
-        return res.status(400).send({
-          status: 400,
-          error: 'Name too long'
-        });
-      }
       if (name.trim() === '') {
         return res.status(400).send({
           status: 400,

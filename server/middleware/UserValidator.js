@@ -13,13 +13,13 @@ class UserValidator {
   static SigninValidator(req, res, next) {
     const errors = {};
     const {
-      firstname, lastname, othernames, email, phoneNumber, passportUrl, password, confirmPassword
+      firstname, lastname, othername, email, phoneNumber, passportUrl, password, confirmPassword
     } = req.body;
     if (firstname) {
       if (!/^[a-zA-Z_ ]+$/.test(firstname)) {
-        errors.firstname = 'Invalid First-name';
+        errors.firstname = 'Invalid characters, must contain letters only';
       } else if (firstname.trim() === '') {
-        errors.firstname = 'Must contain First-name';
+        errors.firstname = 'Field is empthy, must contain a valid character';
       }
     } else {
       errors.firstname = 'First-Name is not defined';
@@ -27,19 +27,19 @@ class UserValidator {
 
     if (lastname) {
       if (!/^[a-zA-Z_ ]+$/.test(lastname)) {
-        errors.lastname = 'Invalid Last-name';
+        errors.lastname = 'Invalid characters, must contain letters only';
       } else if (lastname.trim() === '') {
-        errors.lastname = 'Must contain Last-name';
+        errors.lastname = 'Field is empthy, must contain a valid character';
       }
     } else {
       errors.lastname = 'Last-Name is not defined';
     }
 
-    if (othernames) {
-      if (!/^[a-zA-Z_ ]+$/.test(othernames)) {
-        errors.othernames = 'Invalid Other-name';
-      } else if (othernames.trim() === '') {
-        errors.othernames = 'Must contain Other-name';
+    if (othername) {
+      if (!/^[a-zA-Z_ ]+$/.test(othername)) {
+        errors.othername = 'Invalid characters, must contain letters only';
+      } else if (othername.trim() === '') {
+        errors.othername = 'Field is empthy, must contain a valid character';
       }
     } else {
       errors.othernames = 'Other-Name is not defined';
