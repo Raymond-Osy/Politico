@@ -39,7 +39,7 @@ export default {
         if (err) {
           return res.status(403).json({ message: 'Invalid token supplied' });
         }
-        if (decoded.user.isAdmin !== 'true') {
+        if (decoded.user.isadmin !== true) {
           return res.status(403).json({ message: 'UnAuthorised User' });
         }
         req.user = decoded.user;

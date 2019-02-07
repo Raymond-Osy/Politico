@@ -16,6 +16,8 @@ const createCandidate = 'INSERT INTO candidate(office, party, candidate) values(
 
 const createVote = 'INSERT INTO vote(createdby, candidate, office) values($1, $2, $3) RETURNING *';
 const checkIfVoteExists = 'SELECT * from vote where createdby = $1 and office = $2';
+const queryVotesByOfficeId = 'SELECT * from vote where office = $1';
+const queryCandidatesByOfficeId = 'SELECT * FROM candidate where office = $1';
 
 const Queries = {
   insertIntoUsers,
@@ -31,7 +33,9 @@ const Queries = {
   getCandidate,
   createCandidate,
   createVote,
-  checkIfVoteExists
+  checkIfVoteExists,
+  queryVotesByOfficeId,
+  queryCandidatesByOfficeId
 };
 
 export default Queries;
