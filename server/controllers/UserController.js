@@ -60,8 +60,8 @@ class UserController {
         });
       }
       const user = rows[0];
-      const { id } = user;
-      const token = Authenticator.generateToken({ id, email });
+      const { id, isadmin } = user;
+      const token = Authenticator.generateToken({ id, email, isadmin });
       return res.status(200).json({ status: 200, data: [{ token, user }] });
     });
   }

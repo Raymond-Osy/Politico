@@ -82,7 +82,7 @@ class OfficeController {
       if (rowCount === 0) {
         db.query(queries.createCandidate, [office, party, req.params.userId], (err, dbRes) => {
           if (err) {
-            return res.status(500).json({ status: 500, error: err });
+            return res.status(500).json({ status: 500, error: err.detail });
           }
           const { rows } = dbRes;
           const candidate = rows[0];
@@ -97,6 +97,47 @@ class OfficeController {
       } else {
         return res.json({ status: 409, error: 'Candidate is already registerd' });
       }
+    });
+  }
+
+  /**
+  * @static
+  * @param {object} req - The request payload recieved from the router
+  * @param {object} res - The response payload sent back from the controller
+  * @returns {object} - The particular office
+  * @memberOf OfficeController
+  */
+  static fetchResults(req, res) {
+    db.query(queries.queryCandidatesByOfficeId, [req.params.officeId], (err, dbRes) => {
+      if (err) {
+        return res.status(400).json({ status: 400, error: err });
+      }
+      const { rows, rowCount } = dbRes;
+      if (rowCount === 0) {
+        return res.status(404).json({ status: 404, error: 'votes not found' });
+      }
+      const candidates = rows.map(row => row.candidate);
+      db.query(queries.queryVotesByOfficeId, [req.params.officeId], (err, dbres) => {
+        if (err) {
+          return res.status(400).json({ status: 400, error: err });
+        }
+        if (dbres.rowCount === 0) {
+          return res.status(404).json({ status: 404, error: 'Office not found' });
+        }
+        const votes = dbres.rows;
+        const result = candidates.map((candidate) => {
+          const candidateResult = {
+            office: req.params.officeId,
+            candidate,
+            result: 0
+          };
+          const individualVotes = votes.filter(vote => vote.candidate === candidate);
+
+          candidateResult.result = individualVotes.length;
+          return candidateResult;
+        });
+        return res.status(200).json({ status: 200, data: result });
+      });
     });
   }
 }
