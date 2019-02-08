@@ -3,7 +3,7 @@ import db from './index';
 const insertIntoUsers = `INSERT INTO users(
   firstname,
   lastname,
-  othernames,
+  othername,
   email,
   phoneNumber,
   passportUrl,
@@ -20,7 +20,7 @@ const insertIntoOffice = `INSERT INTO office(
     values('Federal Government', 'President'),
     ('State Government', 'Governor')`;
 
-const insertIntoParty = `INSERT INTO party( name, hqaddress, logourl)
+const insertIntoParty = `INSERT INTO party( name, hqAddress, logoUrl)
       values('APC', '123, Party road, Abuja', 'https://via.placeholder.com/650x450'),
       ('PDP', '345, Party road Abuja', 'https://via.placeholder.com/650x450')`;
 

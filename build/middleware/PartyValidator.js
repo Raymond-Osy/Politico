@@ -40,12 +40,6 @@ var PartyValidator = function () {
             error: 'Name must contain letters only'
           });
         }
-        if (name.length > 30) {
-          return res.status(400).send({
-            status: 400,
-            error: 'Name too long'
-          });
-        }
         if (name.trim() === '') {
           return res.status(400).send({
             status: 400,
@@ -61,12 +55,6 @@ var PartyValidator = function () {
 
       // Head quarter validations
       if (hqAddress) {
-        if (hqAddress.length > 100) {
-          return res.status(400).send({
-            status: 400,
-            error: 'Address too long'
-          });
-        }
         if (hqAddress.trim() === '') {
           return res.status(400).send({
             status: 400,

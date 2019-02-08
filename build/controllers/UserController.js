@@ -45,14 +45,20 @@ var UserController = function () {
       var _req$body = req.body,
           firstname = _req$body.firstname,
           lastname = _req$body.lastname,
-          othernames = _req$body.othernames,
+          othername = _req$body.othername,
           email = _req$body.email,
           phoneNumber = _req$body.phoneNumber,
           passportUrl = _req$body.passportUrl,
           password = _req$body.password;
 
 
-      _index2.default.query(_queries2.default.insertIntoUsers, [firstname, lastname, othernames, email, phoneNumber, passportUrl, password], function (err, dbRes) {
+      firstname = firstname.trim();
+      lastname = lastname.trim();
+      othername = othername.trim();
+      email = email.trim();
+      var parameters = [firstname, lastname, othername, email, phoneNumber, passportUrl, password];
+
+      _index2.default.query(_queries2.default.insertIntoUsers, parameters, function (err, dbRes) {
         if (err) {
           if (err.code === '23505') {
             return res.json({ status: 409, error: 'Email Address already exist in our database' });
@@ -100,9 +106,10 @@ var UserController = function () {
           });
         }
         var user = rows[0];
-        var id = user.id;
+        var id = user.id,
+            isadmin = user.isadmin;
 
-        var token = _authenticator2.default.generateToken({ id: id, email: email });
+        var token = _authenticator2.default.generateToken({ id: id, email: email, isadmin: isadmin });
         return res.status(200).json({ status: 200, data: [{ token: token, user: user }] });
       });
     }

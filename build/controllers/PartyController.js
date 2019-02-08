@@ -40,7 +40,7 @@ var PartyController = function () {
     value: function getAllParties(req, res) {
       _index2.default.query(_queries2.default.getAllParties, function (err, dbRes) {
         if (err) {
-          return res.status(500).json({ status: 500, error: err });
+          return res.status(500).json({ status: 500, error: 'Can not get all parties at the moment, Try again later' });
         }
         var rows = dbRes.rows;
 
@@ -65,14 +65,19 @@ var PartyController = function () {
           logoUrl = _req$body.logoUrl;
 
 
-      _index2.default.query(_queries2.default.createParty, [name, hqAddress, logoUrl], function (err, dbRes) {
+      name = name.trim();
+      hqAddress = hqAddress.trim();
+      logoUrl = logoUrl.trim();
+      var parameters = [name, hqAddress, logoUrl];
+
+      _index2.default.query(_queries2.default.createParty, parameters, function (err, dbRes) {
         if (err) {
-          return res.status(500).json({ status: 500, error: err });
+          return res.status(500).json({ status: 500, error: 'Can not create party at the moment, Try again later' });
         }
         var rows = dbRes.rows;
+        // const party = rows[0];
 
-        var party = rows[0];
-        return res.json({ status: 201, data: [{ party: party }] });
+        return res.json({ status: 201, data: rows });
       });
     }
 
@@ -89,7 +94,7 @@ var PartyController = function () {
     value: function getAPartyById(req, res) {
       _index2.default.query(_queries2.default.getPartyById, [req.params.id], function (err, dbRes) {
         if (err) {
-          return res.status(500).json({ status: 500, error: err });
+          return res.status(500).json({ status: 500, error: 'Can not get party at the moment, Try again later' });
         }
         var rows = dbRes.rows,
             rowCount = dbRes.rowCount;
@@ -114,7 +119,7 @@ var PartyController = function () {
     value: function deleteParty(req, res) {
       _index2.default.query(_queries2.default.deleteParty, [req.params.id], function (err, dbRes) {
         if (err) {
-          return res.json({ status: 500, error: 'Could not Delete entry', err: err });
+          return res.json({ status: 500, error: 'Could not Delete entry, try again later.' });
         }
         if (dbRes.rowCount === 0) {
           return res.json({ status: 404, message: 'Party with ID ' + req.params.id + ' does not exist', err: err });
@@ -139,7 +144,7 @@ var PartyController = function () {
     value: function editParty(req, res) {
       _index2.default.query(_queries2.default.updateParty, [req.body.name, req.params.id], function (err, dbRes) {
         if (err) {
-          return res.json({ status: 500, message: 'Could not update party', err: err });
+          return res.json({ status: 500, message: 'Could not update party, try again later' });
         }
         if (dbRes.rowCount === 0) {
           return res.json({ status: 404, message: 'Party with ID ' + req.params.id + ' does not exist', err: err });

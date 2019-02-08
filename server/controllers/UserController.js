@@ -15,12 +15,19 @@ class UserController {
     * @memberOf UserController
     */
   static signUp(req, res) {
-    const {
-      firstname, lastname, othernames, email, phoneNumber, passportUrl, password
+    let {
+      // eslint-disable-next-line prefer-const
+      firstname, lastname, othername, email, phoneNumber, passportUrl, password
     } = req.body;
 
+    firstname = firstname.trim();
+    lastname = lastname.trim();
+    othername = othername.trim();
+    email = email.trim();
+    const parameters = [firstname, lastname, othername, email, phoneNumber, passportUrl, password];
+
     db.query(queries.insertIntoUsers,
-      [firstname, lastname, othernames, email, phoneNumber, passportUrl, password],
+      parameters,
       (err, dbRes) => {
         if (err) {
           if (err.code === '23505') {

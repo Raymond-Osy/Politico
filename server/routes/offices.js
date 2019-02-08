@@ -16,7 +16,7 @@ const officeRouter = express.Router();
 officeRouter.post('/', createOfficeValidator, Authenticator.isAuthenticated, Authenticator.isAuthorised, createOffice);
 officeRouter.get('/', Authenticator.isAuthenticated, getAllOffices);
 officeRouter.get('/:id', Authenticator.isAuthenticated, getAnOfficeById);
-officeRouter.post('/:userId/register', Authenticator.isAuthenticated, registerCandidate);
+officeRouter.post('/:userId/register', Authenticator.isAuthenticated, Authenticator.isAuthorised, registerCandidate);
 officeRouter.get('/:officeId/results', Authenticator.isAuthenticated, fetchResults);
 
 export default officeRouter;

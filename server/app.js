@@ -19,7 +19,7 @@ app.use('/api/v1', router);
 // welcome route
 app.get('/', (req, res) => {
   res.status(200).json({
-    status: '200',
+    status: 200,
     message: 'Welcome to Politico!'
   });
 });
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 // Default catch-all route that sends back an error message for wrong routes
 app.all('/*', (req, res) => {
   res.status(404).json({
-    status: '404',
+    status: 404,
     message: 'The page you were looking for was not found!'
   });
 });
