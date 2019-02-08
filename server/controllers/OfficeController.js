@@ -14,14 +14,19 @@ class OfficeController {
   * @memberOf OfficeController
   */
   static createOffice(req, res) {
-    const { type, name } = req.body;
-    db.query(queries.createOffice, [type, name], (err, dbRes) => {
+    let { type, name } = req.body;
+
+    name = name.trim();
+    type = type.trim();
+    const parameters = [type, name];
+
+    db.query(queries.createOffice, parameters, (err, dbRes) => {
       if (err) {
-        return res.status(500).json({ status: 500, error: 'Can not create office at the moment, Try again later' });
+        return res.status(500).json({ status: 500, error: 'Can not create office, Please check inputs and Try again later' });
       }
       const { rows } = dbRes;
-      const office = rows[0];
-      return res.status(201).json({ status: 201, data: [{ office }] });
+      // const office = rows[0];
+      return res.status(201).json({ status: 201, data: rows });
     });
   }
 
@@ -52,7 +57,7 @@ class OfficeController {
   static getAnOfficeById(req, res) {
     db.query(queries.getAnOfficeById, [req.params.id], (err, dbRes) => {
       if (err) {
-        return res.status(500).json({ status: 500, error: 'Can not create party at the moment, Try again later' });
+        return res.status(500).json({ status: 500, error: 'Can not get a party at the moment, Try again later' });
       }
       const { rows, rowCount } = dbRes;
       if (rowCount === 0) {

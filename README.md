@@ -58,9 +58,12 @@ npm run dev
 5. Install postman to test all endpoints
 
 ## Testing
-- to test run `npm run test`
+- To test locally, run `npm run test` or you can simply test it on postman using the local host: http://localhost:8000/api/v1/auth/
+
+- To test the endpoint hosted on the cloud(Heroku), use this link: https://politicom.herokuapp.com/api/v1/auth/
 
 ## API
+Checkout the documentations [Here](https://politicom.docs.apiary.io/) to see how the endpoints works
 <table>
 <tr><th>Http verb</th><th>Endpoint</th><th>Action</th></tr>
 <tr> <td>GET</td> <td> /parties </td> <td>Get all Parties</td></tr>

@@ -43,11 +43,10 @@ var VoteController = function () {
           office = _req$body.office;
 
       var createdBy = req.user.id;
-      // check if user is already voted for this office
+      // check if user has already voted for this office
       _index2.default.query(_queries2.default.checkIfVoteExists, [createdBy, office], function (err, data) {
         if (err) {
-          console.log(err, '>>>>>>>>>>>>>>>>>>');
-          return res.json({ status: 500, error: 'Cannot vote at the moment' });
+          return res.json({ status: 500, error: 'Cannot vote at the moment, Try again later.' });
         }
         var rowCount = data.rowCount;
 

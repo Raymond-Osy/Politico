@@ -32,7 +32,7 @@ var UserValidator = function () {
       var _req$body = req.body,
           firstname = _req$body.firstname,
           lastname = _req$body.lastname,
-          othernames = _req$body.othernames,
+          othername = _req$body.othername,
           email = _req$body.email,
           phoneNumber = _req$body.phoneNumber,
           passportUrl = _req$body.passportUrl,
@@ -41,9 +41,9 @@ var UserValidator = function () {
 
       if (firstname) {
         if (!/^[a-zA-Z_ ]+$/.test(firstname)) {
-          errors.firstname = 'Invalid First-name';
+          errors.firstname = 'Invalid characters, must contain letters only';
         } else if (firstname.trim() === '') {
-          errors.firstname = 'Must contain First-name';
+          errors.firstname = 'Field is empthy, must contain a valid character';
         }
       } else {
         errors.firstname = 'First-Name is not defined';
@@ -51,19 +51,19 @@ var UserValidator = function () {
 
       if (lastname) {
         if (!/^[a-zA-Z_ ]+$/.test(lastname)) {
-          errors.lastname = 'Invalid Last-name';
+          errors.lastname = 'Invalid characters, must contain letters only';
         } else if (lastname.trim() === '') {
-          errors.lastname = 'Must contain Last-name';
+          errors.lastname = 'Field is empthy, must contain a valid character';
         }
       } else {
         errors.lastname = 'Last-Name is not defined';
       }
 
-      if (othernames) {
-        if (!/^[a-zA-Z_ ]+$/.test(othernames)) {
-          errors.othernames = 'Invalid Other-name';
-        } else if (othernames.trim() === '') {
-          errors.othernames = 'Must contain Other-name';
+      if (othername) {
+        if (!/^[a-zA-Z_ ]+$/.test(othername)) {
+          errors.othername = 'Invalid characters, must contain letters only';
+        } else if (othername.trim() === '') {
+          errors.othername = 'Field is empthy, must contain a valid character';
         }
       } else {
         errors.othernames = 'Other-Name is not defined';

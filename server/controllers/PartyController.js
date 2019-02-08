@@ -31,15 +31,20 @@ class PartyController {
   * @memberOf PartyController
   */
   static createParty(req, res) {
-    const { name, hqAddress, logoUrl } = req.body;
+    let { name, hqAddress, logoUrl } = req.body;
 
-    db.query(queries.createParty, [name, hqAddress, logoUrl], (err, dbRes) => {
+    name = name.trim();
+    hqAddress = hqAddress.trim();
+    logoUrl = logoUrl.trim();
+    const parameters = [name, hqAddress, logoUrl];
+
+    db.query(queries.createParty, parameters, (err, dbRes) => {
       if (err) {
         return res.status(500).json({ status: 500, error: 'Can not create party at the moment, Try again later' });
       }
       const { rows } = dbRes;
-      const party = rows[0];
-      return res.json({ status: 201, data: [{ party }] });
+      // const party = rows[0];
+      return res.json({ status: 201, data: rows });
     });
   }
 

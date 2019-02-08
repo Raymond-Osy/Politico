@@ -4,7 +4,7 @@ const createUserTable = `CREATE TABLE users(
     Id SERIAL PRIMARY KEY,
     firstname VARCHAR,
     lastname VARCHAR,
-    othernames VARCHAR,
+    othername VARCHAR,
     email VARCHAR(40) UNIQUE NOT NULL,
     phoneNumber VARCHAR(40),
     passportUrl VARCHAR,
@@ -13,7 +13,7 @@ const createUserTable = `CREATE TABLE users(
 
 const createPartyTable = `CREATE TABLE party(
     Id SERIAL PRIMARY KEY,
-    name VARCHAR,
+    name VARCHAR UNIQUE,
     hqAddress VARCHAR(255),
     logoUrl VARCHAR
 )`;
@@ -21,7 +21,7 @@ const createPartyTable = `CREATE TABLE party(
 const createOfficeTable = `CREATE TABLE office(
     Id SERIAL PRIMARY KEY,
     type VARCHAR(100),
-    name VARCHAR
+    name VARCHAR UNIQUE
 )`;
 
 const createCandidateTable = `CREATE TABLE candidate(

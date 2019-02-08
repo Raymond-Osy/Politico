@@ -33,9 +33,9 @@ var createPartyValidator = _PartyValidator2.default.createPartyValidator;
 var partyRouter = _express2.default.Router();
 
 partyRouter.get('/', _authenticator2.default.isAuthenticated, getAllParties);
-partyRouter.post('/', _authenticator2.default.isAuthenticated, createPartyValidator, createParty);
+partyRouter.post('/', _authenticator2.default.isAuthenticated, _authenticator2.default.isAuthorised, createPartyValidator, createParty);
 partyRouter.get('/:id', _authenticator2.default.isAuthenticated, getAPartyById);
-partyRouter.delete('/:id', _authenticator2.default.isAuthenticated, deleteParty);
-partyRouter.patch('/:id/name', _authenticator2.default.isAuthenticated, editParty);
+partyRouter.delete('/:id', _authenticator2.default.isAuthenticated, _authenticator2.default.isAuthorised, deleteParty);
+partyRouter.patch('/:id/name', _authenticator2.default.isAuthenticated, _authenticator2.default.isAuthorised, editParty);
 
 exports.default = partyRouter;
