@@ -63,14 +63,10 @@ div.content {
 }
 .name-circle {
     text-align: center;
-    height: 50px;
-    width: 50px;
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #2f7a17;
-    border-radius: 50%;
-    color: #ffffff;
 }
 
 /* BODY NAVIGATION BAR */
@@ -109,12 +105,16 @@ div.content {
 
 /* CARDS */
 .card {
-    flex: 0 1 33%;
+    flex: 0 1 26%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin: 5px;
-    margin-top: 15px;
     text-align: center;
-    font-family: arial;
+    background-color: #ffffff;
+    padding: 5px;
+    margin: 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+    width: 100px;
+    min-height: 130px;
 }
 .card button {
     border: none;
@@ -134,6 +134,9 @@ div.content {
 }
 .card button:hover {
     opacity: 0.7;
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .img-responsive {
     display: block;
@@ -252,20 +255,80 @@ div.content {
     flex-wrap: wrap;
 }
 
-/* CARD */
-.card {
-    background-color: #ffffff;
-    padding: 5px;
-    margin: 15px;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 250px;
-    min-height: 130px;
+/* Collapsible Buttons */
+.collapse-btns {
+    padding: 5px 100px;
 }
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.collapse-btn {
+    margin-top: 10px;
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+#table-content {
+    overflow-x: auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+#table-content td, #table-content th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+.won {
+    color: #2f7a17;
+    font-size: bold;
+} 
+.collapse-content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+}
+.collapse-btn:hover {
+    background-color: #555;
+}
+.collapse-btn:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+.on:after {
+    content: "\2212";
+}
+
+/* PAGINATION */
+.pagination {
+    display: flex;
+    padding: 0 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+.pagination a {
+    color: #000;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
 }
 
 /* FOOTER */
@@ -403,6 +466,9 @@ input[type=submit]:hover {
         width: 100%;
         margin-top: 0;
     }
+    .collapse-btns {
+        padding: 2px 15px;
+    }
 }
 
 
@@ -470,22 +536,24 @@ input[type=submit]:hover {
         margin-bottom: 10px;
         border-bottom: 2px solid #252525;
     }
-  }
-  
-  
-  @media screen and (max-width: 400px) {
+}
+
+@media screen and (max-width: 550px) {
     .sidebar a {
-      text-align: center;
-      float: none;
+        text-align: center;
+        float: none;
     }
     .sidebar a.active {
         border-left: 0px;
         border-bottom: 0px;
     }
     div.content {
-        padding-top: 350px;
+        padding-top: 400px;
         margin-left: 0;
     }
+}
+  
+@media screen and (max-width: 400px) {
     .text-center {
         font-size: 75%;
     }
@@ -500,10 +568,10 @@ input[type=submit]:hover {
     .modal {
         padding-top: 200px;
         padding-left: 0px;
-      }
-      .confirm {
-          padding: 4px;
-          width: 60px;
-          font-size: 17px;
-      }
-  }
+    }
+    .confirm {
+        padding: 4px;
+        width: 60px;
+        font-size: 17px;
+    }
+}
