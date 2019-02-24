@@ -80,7 +80,7 @@ class OfficeController {
     // check if user is already registered
     db.query(queries.getCandidate, [req.params.userId], (err, data) => {
       if (err) {
-        return res.json({ status: 500, error: 'Cannot register at the moment' });
+        return res.status(500).json({ status: 500, error: 'Cannot register at the moment' });
       }
       const { rowCount } = data;
       // checks the candidate table to see if there is candidate
@@ -100,7 +100,7 @@ class OfficeController {
           });
         });
       } else {
-        return res.json({ status: 409, error: 'Candidate is already registerd' });
+        return res.status(409).json({ status: 409, error: 'Candidate is already registerd' });
       }
     });
   }
@@ -115,7 +115,7 @@ class OfficeController {
   static fetchResults(req, res) {
     db.query(queries.queryCandidatesByOfficeId, [req.params.officeId], (err, dbRes) => {
       if (err) {
-        return res.status(400).json({ status: 400, error: err });
+        return res.status(500).json({ status: 500, error: err });
       }
       const { rows, rowCount } = dbRes;
       if (rowCount === 0) {
@@ -124,7 +124,7 @@ class OfficeController {
       const candidates = rows.map(row => row.candidate);
       db.query(queries.queryVotesByOfficeId, [req.params.officeId], (err, dbres) => {
         if (err) {
-          return res.status(400).json({ status: 400, error: err });
+          return res.status(500).json({ status: 500, error: err });
         }
         if (dbres.rowCount === 0) {
           return res.status(404).json({ status: 404, error: 'Office not found' });

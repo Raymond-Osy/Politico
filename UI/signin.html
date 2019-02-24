@@ -36,13 +36,14 @@
         </section>
 
         <footer class="footer-container-form"> 
-            <form class="container" action="userProfile.html">             
+            <form class="container" id="signinForm" role="form" method="POST">             
                 <div class="form-container">
+                    <span id="response"></span>
                     <label for="uname"><b>Email Address</b></label>
-                    <input type="email" placeholder="Enter Email Address" name="uname" required>
+                    <input type="email" id="email" placeholder="Enter Email Address" name="uname" required>
                 
                     <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <input type="password" id="password" placeholder="Enter Password" name="psw" required>
                         
                     <button class="btn-form" type="submit">Signin</button>
                     <p>Don't have an account? Signup <a href="signup.html" class="link">here.</a></p>
@@ -53,5 +54,6 @@
                 <p>Copyright &copy; 2018, Raymond Akalonu.</p>
             </div>
         </footer>
+        <script src="assets/js/signin.js"></script>
     </body>
 </html>

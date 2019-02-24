@@ -44,7 +44,7 @@ class PartyController {
       }
       const { rows } = dbRes;
       // const party = rows[0];
-      return res.json({ status: 201, data: rows });
+      return res.status(201).json({ status: 201, data: rows });
     });
   }
 
@@ -83,7 +83,7 @@ class PartyController {
       if (dbRes.rowCount === 0) {
         return res.json({ status: 404, message: `Party with ID ${req.params.id} does not exist`, err });
       }
-      return res.status(200).json({
+      return res.status(200).status(200).json({
         status: 200,
         data: `Party with ID ${req.params.id} was successfully deleted`,
       });
@@ -105,7 +105,7 @@ class PartyController {
       if (dbRes.rowCount === 0) {
         return res.json({ status: 404, message: `Party with ID ${req.params.id} does not exist`, err });
       }
-      return res.json({
+      return res.status(200).json({
         status: 200,
         data: {
           id: req.params.id,

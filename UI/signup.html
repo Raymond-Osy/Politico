@@ -36,27 +36,37 @@
         </section>
 
         <footer class="footer-container-form"> 
-                <form class="container" id="signupForm" action="userProfile.html">             
+                <form class="container" id="signupForm" role="form" method="POST"> 
                     <div class="form-container">
+                        <span id="success"></span>
                         <label for="fname"><b>First Name</b></label>
+                        <span id="invalidF"></span>
                         <input type="text" id="fName" placeholder="Enter First Name" name="fname" required>
                     
                         <label for="lname"><b>Last Name</b></label>
+                        <span id="invalidL"></span>
                         <input type="text" id="lName"placeholder="Enter Last Name" name="lname" required>
                     
-                        <label for="lname"><b>Other Name</b></label>
+                        <label for="oname"><b>Other Name</b></label>
+                        <span id="invalidO"></span>
                         <input type="text" id="oName"placeholder="Enter Other Name" name="oname" required>
 
-                        <label for="lname"><b>Phone Number</b></label>
+                        <label for="pname"><b>Phone Number</b></label>
                         <input type="number" id="pNumber" placeholder="Enter Phone number" name="pNumber" min="1" style="padding: 10px" style="margin: 20px 0"  required>
 
+                        <label for="passport"><b>Add Passport</b></label>
+                        <input type="file" id="passport" name="pic" accept="image/*" required>
+
                         <label for="email"><b>Email Address</b></label>
+                        <span id="invalidE"></span>
                         <input type="email" id="email" placeholder="Enter Email Address" name="email" required>
                     
                         <label for="psw"><b>Password</b></label>
+                        <span id="invalidP"></span>
                         <input type="password" id="password" placeholder="Enter Password" name="psw" required>
                     
                         <label for="cpsw"><b>Confirm Password</b></label>
+                        <span id="confirmPass"></span>                        
                         <input type="password" id="cPassword" placeholder="Confirm Password" name="psw" required>
                         
                         <button class="btn-form" type="submit">Signup</button>
