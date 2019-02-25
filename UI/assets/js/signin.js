@@ -41,6 +41,10 @@ signinForm.addEventListener('submit', (e) => {
                 }, 5000);
             }
         }
+        if(typeof data.error === 'string'){
+          authResponse.innerHTML = data.error;
+          authResponse.style.color = 'red';
+        }
       console.log(data);
   })
   .catch(err => {

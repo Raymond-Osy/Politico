@@ -1,5 +1,5 @@
 const insertIntoUsers = 'INSERT INTO users(firstname, lastname, othername, email, phoneNumber, passportUrl, password) values($1, $2, $3, $4, $5, $6, $7) RETURNING *';
-const queryUsers = 'SELECT * FROM users WHERE email = $1 and password = $2';
+const queryUsers = 'SELECT * FROM users WHERE email = $1';
 
 const createOffice = 'INSERT INTO office(type, name) values($1, $2) RETURNING *';
 const getAllOffices = 'SELECT * FROM office';

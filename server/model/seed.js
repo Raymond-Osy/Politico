@@ -1,4 +1,7 @@
 import db from './index';
+import Authenticator from '../middleware/authenticator';
+
+const hashedPassword = Authenticator.hashPassword('secret');
 
 const insertIntoUsers = `INSERT INTO users(
   firstname,
@@ -9,10 +12,8 @@ const insertIntoUsers = `INSERT INTO users(
   passportUrl,
   password,
   isAdmin)
-  values('Raymond', 'Akalonu', 'Osinachi', 'ray@mail.com', '09012345678', 'https://via.placeholder.com/650x450', 'secret', 'TRUE'),
-  ('Jonathan', 'Philip', 'Bigjoe', 'bigjoe@mail.com', '07000000000', 'https://via.placeholder.com/650x450', 'secret', 'FALSE'),
-  ('John', 'Doe', 'Lorem', 'johndoe@yahoo.com', '08000000000', 'https://via.placeholder.com/650x450', 'secret', 'FALSE'),
-  ('Lorem', 'Ipsum', 'Charles', 'lorem@yahoo.com', '09000000000', 'https://via.placeholder.com/650x450', 'secret', 'FALSE')`;
+  values('Raymond', 'Akalonu', 'Osinachi', 'ray@mail.com', '09012345678', 'https://via.placeholder.com/650x450', '${hashedPassword}', 'TRUE'),
+  ('John', 'Doe', 'Lorem', 'lorem@mail.com', '09000000000', 'https://via.placeholder.com/650x450', '${hashedPassword}', 'FALSE')`;
 
 const insertIntoOffice = `INSERT INTO office(
     type,
@@ -29,8 +30,8 @@ const insertIntoCandidate = `INSERT INTO candidate(office, party, candidate)
       ('1', '2', '2')`;
 
 const insertIntoVote = `INSERT INTO vote(createdby, office, candidate)
-      values('3', '1', '1'),
-      ('4', '1', '2')`;
+      values('1', '1', '1'),
+      ('2', '1', '2')`;
 
 db.query(insertIntoUsers, (err) => {
   if (err) {

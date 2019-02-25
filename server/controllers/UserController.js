@@ -24,8 +24,9 @@ class UserController {
     lastname = lastname.trim();
     othername = othername.trim();
     email = email.trim();
-    // const hashedPassword = Authenticator.hashPassword(password);
-    const parameters = [firstname, lastname, othername, email, phoneNumber, passportUrl, password];
+    const hashedPassword = Authenticator.hashPassword(password);
+    // eslint-disable-next-line max-len
+    const parameters = [firstname, lastname, othername, email, phoneNumber, passportUrl, hashedPassword];
 
     db.query(queries.insertIntoUsers,
       parameters,
@@ -54,7 +55,7 @@ class UserController {
   static login(req, res) {
     const { email, password } = req.body;
 
-    db.query(queries.queryUsers, [email, password], (err, dbRes) => {
+    db.query(queries.queryUsers, [email], (err, dbRes) => {
       if (err) {
         console.log(err, '==================');
         return res.status(500).json({
@@ -69,6 +70,14 @@ class UserController {
           message: 'Incorrect Email or password'
         });
       }
+      const verifyPassword = Authenticator.comparePassword(password, rows[0].password);
+      if (!verifyPassword) {
+        return res.status(409).json({
+          status: 409,
+          error: 'Incorrect Email or password',
+        });
+      }
+
       const user = rows[0];
       const { id, isadmin } = user;
       const token = Authenticator.generateToken({ id, email, isadmin });

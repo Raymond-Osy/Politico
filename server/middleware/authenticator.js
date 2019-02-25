@@ -7,7 +7,7 @@ export default {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
   },
 
-  comparePassword(hashPassword, password) {
+  comparePassword(password, hashPassword) {
     return bcrypt.compareSync(password, hashPassword);
   },
 

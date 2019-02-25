@@ -85,6 +85,10 @@ signupForm.addEventListener('submit', (e) => {
             window.location.assign('./userProfile.html');
           }, 5000);
         }
+        if(typeof data.error === 'string'){
+          authResponse.innerHTML = 'Something is not right, please try again later';
+          authResponse.style.color = 'red';
+        }
       console.log(data);
   })
   .catch(err => {
