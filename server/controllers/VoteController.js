@@ -19,18 +19,25 @@ class VoteController {
     // check if user has already voted for this office
     db.query(queries.checkIfVoteExists, [createdBy, office], (err, data) => {
       if (err) {
-        return res.json({ status: 500, error: 'Cannot vote at the moment, Try again later.' });
+        return res.status(500).json({ status: 500, error: 'Cannot vote at the moment, Try again later.' });
       }
       const { rowCount } = data;
       if (rowCount === 0) {
         db.query(queries.createVote, [createdBy, candidate, office], (err) => {
           if (err) {
-            return res.json({ status: 400, error: err });
+            return res.status(500).json({ status: 500, error: err });
           }
-          return res.json({ status: 201, data: [{ office, candidate, voter: createdBy }] });
+          return res.status(201).json({
+            status: 201,
+            data: [{
+              office,
+              candidate,
+              voter: createdBy
+            }]
+          });
         });
       } else {
-        return res.json({ status: 409, error: `You have already voted for office with ID ${office}` });
+        return res.status(409).json({ status: 409, error: `You have already voted for office with ID ${office}` });
       }
     });
   }

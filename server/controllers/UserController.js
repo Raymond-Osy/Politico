@@ -24,21 +24,24 @@ class UserController {
     lastname = lastname.trim();
     othername = othername.trim();
     email = email.trim();
-    const parameters = [firstname, lastname, othername, email, phoneNumber, passportUrl, password];
+    const hashedPassword = Authenticator.hashPassword(password);
+    // eslint-disable-next-line max-len
+    const parameters = [firstname, lastname, othername, email, phoneNumber, passportUrl, hashedPassword];
 
     db.query(queries.insertIntoUsers,
       parameters,
       (err, dbRes) => {
         if (err) {
           if (err.code === '23505') {
-            return res.json({ status: 409, error: 'Email Address already exist in our database' });
+            return res.status(409).json({ status: 409, error: 'Email Address already exist in our database' });
           }
+          console.log(err, '==================');
           return res.json({ status: 500, error: 'Could not register at the moment. Try again later.' });
         }
         const user = dbRes.rows[0];
         const { id } = user;
         const token = Authenticator.generateToken({ email, id });
-        return res.json({ status: 201, data: [{ token, user }] });
+        return res.status(201).json({ status: 201, data: [{ token, user }] });
       });
   }
 
@@ -52,20 +55,29 @@ class UserController {
   static login(req, res) {
     const { email, password } = req.body;
 
-    db.query(queries.queryUsers, [email, password], (err, dbRes) => {
+    db.query(queries.queryUsers, [email], (err, dbRes) => {
       if (err) {
-        return res.json({
+        console.log(err, '==================');
+        return res.status(500).json({
           status: 500,
           message: 'Cannot signup at the moment. Try again later.'
         });
       }
       const { rows, rowCount } = dbRes;
       if (rowCount !== 1) {
-        return res.status(401).json({
+        return res.status(409).json({
           status: 409,
           message: 'Incorrect Email or password'
         });
       }
+      const verifyPassword = Authenticator.comparePassword(password, rows[0].password);
+      if (!verifyPassword) {
+        return res.status(409).json({
+          status: 409,
+          error: 'Incorrect Email or password',
+        });
+      }
+
       const user = rows[0];
       const { id, isadmin } = user;
       const token = Authenticator.generateToken({ id, email, isadmin });

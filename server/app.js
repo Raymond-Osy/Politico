@@ -1,4 +1,6 @@
 import express from 'express';
+import cors from 'cors';
+import path from 'path';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import router from './routes/index';
@@ -14,6 +16,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
+
+app.use('/', express.static(path.join(__dirname, '../UI')));
+app.use(cors());
 app.use('/api/v1', router);
 
 // welcome route
@@ -34,6 +39,6 @@ app.all('/*', (req, res) => {
 
 const port = process.env.PORT || 8000;
 
-app.listen(port);
+app.listen(port, () => console.log('Server listening on port 8000...'));
 
 export default app;

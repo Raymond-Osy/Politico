@@ -8,7 +8,7 @@ const createUserTable = `CREATE TABLE users(
     email VARCHAR(40) UNIQUE NOT NULL,
     phoneNumber VARCHAR(40),
     passportUrl VARCHAR,
-    password VARCHAR(40) NOT NULL,
+    password VARCHAR(75) NOT NULL,
     isAdmin Boolean default false)`;
 
 const createPartyTable = `CREATE TABLE party(
