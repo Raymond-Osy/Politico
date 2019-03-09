@@ -56,20 +56,23 @@ var UserController = function () {
       lastname = lastname.trim();
       othername = othername.trim();
       email = email.trim();
-      var parameters = [firstname, lastname, othername, email, phoneNumber, passportUrl, password];
+      var hashedPassword = _authenticator2.default.hashPassword(password);
+      // eslint-disable-next-line max-len
+      var parameters = [firstname, lastname, othername, email, phoneNumber, passportUrl, hashedPassword];
 
       _index2.default.query(_queries2.default.insertIntoUsers, parameters, function (err, dbRes) {
         if (err) {
           if (err.code === '23505') {
-            return res.json({ status: 409, error: 'Email Address already exist in our database' });
+            return res.status(409).json({ status: 409, error: 'Email Address already exist in our database' });
           }
+          console.log(err, '==================');
           return res.json({ status: 500, error: 'Could not register at the moment. Try again later.' });
         }
         var user = dbRes.rows[0];
         var id = user.id;
 
         var token = _authenticator2.default.generateToken({ email: email, id: id });
-        return res.json({ status: 201, data: [{ token: token, user: user }] });
+        return res.status(201).json({ status: 201, data: [{ token: token, user: user }] });
       });
     }
 
@@ -89,9 +92,10 @@ var UserController = function () {
           password = _req$body2.password;
 
 
-      _index2.default.query(_queries2.default.queryUsers, [email, password], function (err, dbRes) {
+      _index2.default.query(_queries2.default.queryUsers, [email], function (err, dbRes) {
         if (err) {
-          return res.json({
+          console.log(err, '==================');
+          return res.status(500).json({
             status: 500,
             message: 'Cannot signup at the moment. Try again later.'
           });
@@ -100,11 +104,19 @@ var UserController = function () {
             rowCount = dbRes.rowCount;
 
         if (rowCount !== 1) {
-          return res.status(401).json({
+          return res.status(409).json({
             status: 409,
             message: 'Incorrect Email or password'
           });
         }
+        var verifyPassword = _authenticator2.default.comparePassword(password, rows[0].password);
+        if (!verifyPassword) {
+          return res.status(409).json({
+            status: 409,
+            error: 'Incorrect Email or password'
+          });
+        }
+
         var user = rows[0];
         var id = user.id,
             isadmin = user.isadmin;

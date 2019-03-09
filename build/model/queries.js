@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var insertIntoUsers = 'INSERT INTO users(firstname, lastname, othername, email, phoneNumber, passportUrl, password) values($1, $2, $3, $4, $5, $6, $7) RETURNING *';
-var queryUsers = 'SELECT * FROM users WHERE email = $1 and password = $2';
+var queryUsers = 'SELECT * FROM users WHERE email = $1';
 
 var createOffice = 'INSERT INTO office(type, name) values($1, $2) RETURNING *';
 var getAllOffices = 'SELECT * FROM office';

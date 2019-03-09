@@ -68,6 +68,10 @@ div.content {
     justify-content: center;
     align-items: center;
 }
+.profile-img {
+    width: 100%;
+    height: auto;
+}
 
 /* BODY NAVIGATION BAR */
 .img-size {

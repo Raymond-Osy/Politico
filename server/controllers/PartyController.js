@@ -40,11 +40,18 @@ class PartyController {
 
     db.query(queries.createParty, parameters, (err, dbRes) => {
       if (err) {
-        return res.status(500).json({ status: 500, error: 'Can not create party at the moment, Try again later' });
+        console.log('>>>>>>>>>>>>>>', err);
+        return res.status(500).json({
+          status: 500,
+          error: 'Can not create party at the moment, Try again later'
+        });
       }
       const { rows } = dbRes;
       // const party = rows[0];
-      return res.status(201).json({ status: 201, data: rows });
+      return res.status(201).json({
+        status: 201,
+        data: rows
+      });
     });
   }
 

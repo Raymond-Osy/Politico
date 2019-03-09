@@ -1,7 +1,7 @@
 import db from './index';
 import Authenticator from '../middleware/authenticator';
 
-const hashedPassword = Authenticator.hashPassword('secret');
+const hashedPassword = Authenticator.hashPassword('secret123');
 
 const insertIntoUsers = `INSERT INTO users(
   firstname,
@@ -12,7 +12,9 @@ const insertIntoUsers = `INSERT INTO users(
   passportUrl,
   password,
   isAdmin)
-  values('Raymond', 'Akalonu', 'Osinachi', 'ray@mail.com', '09012345678', 'https://via.placeholder.com/650x450', '${hashedPassword}', 'TRUE'),
+  values('Raymond', 'Akalonu', 'Osinachi', 'raymond@mail.com', '09012345678', 'https://via.placeholder.com/650x450', '${hashedPassword}', 'TRUE'),
+  ('Fizz', 'Bozz', 'Lorem', 'fizzbozz@mail.com', '09000000000', 'https://via.placeholder.com/650x450', '${hashedPassword}', 'FALSE'),
+  ('Test', 'Danny', 'Lorem', 'test@mail.com', '09000000000', 'https://via.placeholder.com/650x450', '${hashedPassword}', 'TRUE'),
   ('John', 'Doe', 'Lorem', 'lorem@mail.com', '09000000000', 'https://via.placeholder.com/650x450', '${hashedPassword}', 'FALSE')`;
 
 const insertIntoOffice = `INSERT INTO office(
@@ -22,8 +24,12 @@ const insertIntoOffice = `INSERT INTO office(
     ('State Government', 'Governor')`;
 
 const insertIntoParty = `INSERT INTO party( name, hqAddress, logoUrl)
-      values('APC', '123, Party road, Abuja', 'https://via.placeholder.com/650x450'),
-      ('PDP', '345, Party road Abuja', 'https://via.placeholder.com/650x450')`;
+      values('APC', '123, Party road, Abuja', 'https://res.cloudinary.com/raymondosy/image/upload/v1559525094/img/apclogo_g4os2o.png'),
+      ('PDP', '345, Party road Abuja', 'https://res.cloudinary.com/raymondosy/image/upload/v1559525094/img/PDPlogo_u3qi09.jpg'),
+      ('APGA', '345, Party road Abuja', 'https://res.cloudinary.com/raymondosy/image/upload/v1559525094/img/apgalogo_uwxx9d.png'),
+      ('ACN', '345, Party road Abuja', 'https://res.cloudinary.com/raymondosy/image/upload/v1559525094/img/ACNlogo_pj7qzn.jpg'),
+      ('SDP', '345, Party road Abuja', 'https://res.cloudinary.com/raymondosy/image/upload/v1559525094/img/sdplogo_xygiag.webp'),
+      ('APCN', '123, Party road, Abuja', 'https://res.cloudinary.com/raymondosy/image/upload/v1559525094/img/apclogo_g4os2o.png')`;
 
 const insertIntoCandidate = `INSERT INTO candidate(office, party, candidate)
       values('1', '1', '1'),

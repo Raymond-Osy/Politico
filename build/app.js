@@ -8,6 +8,14 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
+var _cors = require('cors');
+
+var _cors2 = _interopRequireDefault(_cors);
+
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
 var _bodyParser = require('body-parser');
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
@@ -33,6 +41,9 @@ app.use(_bodyParser2.default.json());
 app.use(_bodyParser2.default.urlencoded({
   extended: true
 }));
+
+app.use('/', _express2.default.static(_path2.default.join(__dirname, '../UI')));
+app.use((0, _cors2.default)());
 app.use('/api/v1', _index2.default);
 
 // welcome route
@@ -53,6 +64,8 @@ app.all('/*', function (req, res) {
 
 var port = process.env.PORT || 8000;
 
-app.listen(port);
+app.listen(port, function () {
+  return console.log('Server listening on port 8000...');
+});
 
 exports.default = app;
