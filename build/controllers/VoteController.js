@@ -46,19 +46,26 @@ var VoteController = function () {
       // check if user has already voted for this office
       _index2.default.query(_queries2.default.checkIfVoteExists, [createdBy, office], function (err, data) {
         if (err) {
-          return res.json({ status: 500, error: 'Cannot vote at the moment, Try again later.' });
+          return res.status(500).json({ status: 500, error: 'Cannot vote at the moment, Try again later.' });
         }
         var rowCount = data.rowCount;
 
         if (rowCount === 0) {
           _index2.default.query(_queries2.default.createVote, [createdBy, candidate, office], function (err) {
             if (err) {
-              return res.json({ status: 400, error: err });
+              return res.status(500).json({ status: 500, error: err });
             }
-            return res.json({ status: 201, data: [{ office: office, candidate: candidate, voter: createdBy }] });
+            return res.status(201).json({
+              status: 201,
+              data: [{
+                office: office,
+                candidate: candidate,
+                voter: createdBy
+              }]
+            });
           });
         } else {
-          return res.json({ status: 409, error: 'You have already voted for office with ID ' + office });
+          return res.status(409).json({ status: 409, error: 'You have already voted for office with ID ' + office });
         }
       });
     }

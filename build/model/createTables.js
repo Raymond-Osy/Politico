@@ -6,7 +6,7 @@ var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var createUserTable = 'CREATE TABLE users(\n    Id SERIAL PRIMARY KEY,\n    firstname VARCHAR,\n    lastname VARCHAR,\n    othername VARCHAR,\n    email VARCHAR(40) UNIQUE NOT NULL,\n    phoneNumber VARCHAR(40),\n    passportUrl VARCHAR,\n    password VARCHAR(40) NOT NULL,\n    isAdmin Boolean default false)';
+var createUserTable = 'CREATE TABLE users(\n    Id SERIAL PRIMARY KEY,\n    firstname VARCHAR,\n    lastname VARCHAR,\n    othername VARCHAR,\n    email VARCHAR(40) UNIQUE NOT NULL,\n    phoneNumber VARCHAR(40),\n    passportUrl VARCHAR,\n    password VARCHAR(75) NOT NULL,\n    isAdmin Boolean default false)';
 
 var createPartyTable = 'CREATE TABLE party(\n    Id SERIAL PRIMARY KEY,\n    name VARCHAR UNIQUE,\n    hqAddress VARCHAR(255),\n    logoUrl VARCHAR\n)';
 

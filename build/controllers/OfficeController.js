@@ -123,7 +123,7 @@ var OfficeController = function () {
 
       _index2.default.query(_queries2.default.getCandidate, [req.params.userId], function (err, data) {
         if (err) {
-          return res.json({ status: 500, error: 'Cannot register at the moment' });
+          return res.status(500).json({ status: 500, error: 'Cannot register at the moment' });
         }
         var rowCount = data.rowCount;
         // checks the candidate table to see if there is candidate
@@ -145,7 +145,7 @@ var OfficeController = function () {
             });
           });
         } else {
-          return res.json({ status: 409, error: 'Candidate is already registerd' });
+          return res.status(409).json({ status: 409, error: 'Candidate is already registerd' });
         }
       });
     }
@@ -163,7 +163,7 @@ var OfficeController = function () {
     value: function fetchResults(req, res) {
       _index2.default.query(_queries2.default.queryCandidatesByOfficeId, [req.params.officeId], function (err, dbRes) {
         if (err) {
-          return res.status(400).json({ status: 400, error: err });
+          return res.status(500).json({ status: 500, error: err });
         }
         var rows = dbRes.rows,
             rowCount = dbRes.rowCount;
@@ -176,7 +176,7 @@ var OfficeController = function () {
         });
         _index2.default.query(_queries2.default.queryVotesByOfficeId, [req.params.officeId], function (err, dbres) {
           if (err) {
-            return res.status(400).json({ status: 400, error: err });
+            return res.status(500).json({ status: 500, error: err });
           }
           if (dbres.rowCount === 0) {
             return res.status(404).json({ status: 404, error: 'Office not found' });

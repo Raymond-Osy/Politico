@@ -14,7 +14,7 @@ signinForm.addEventListener('submit', (e) => {
   };
 
   //Consume  API endpoint to /login
-  fetch(`${localUrl}login`, {
+  fetch(`${baseUrl}login`, {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain, */*',

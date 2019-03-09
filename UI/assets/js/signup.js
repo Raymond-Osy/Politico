@@ -1,5 +1,5 @@
 /* eslint-disable */
-baseUrl = "https://politicom.herokuapp.com/api/v1/auth";
+baseUrl = "https://politicom.herokuapp.com/api/v1/auth/";
 localUrl = "http://localhost:8000/api/v1/auth/";
 const signupForm = document.getElementById('signupForm');
 
@@ -64,7 +64,7 @@ signupForm.addEventListener('submit', (e) => {
   }
 
   //Consume  API endpoint to /signup
-  fetch(`${localUrl}signup`, {
+  fetch(`${baseUrl}signup`, {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain, */*',
