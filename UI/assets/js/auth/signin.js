@@ -14,7 +14,7 @@ signinForm.addEventListener('submit', (e) => {
   };
 
   //Consume  API endpoint to /login
-  fetch(`${baseUrl}login`, {
+  fetch(`${localUrl}login`, {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain, */*',
@@ -28,17 +28,17 @@ signinForm.addEventListener('submit', (e) => {
             authResponse.style.color = 'red';
         }
         if (data.status === 200){
-            window.localStorage.setItem('token', data.token);
+            window.localStorage.setItem('token', data.data[0].token);
             authResponse.innerHTML = 'Welcome Back!';
             authResponse.style.color = 'green';
             if (data.data[0].user.isadmin === true) {
                 setTimeout(() => {
-                    window.location.assign('./party.html');
-                }, 5000);
+                    window.location.assign('./createParty.html');
+                }, 3000);
             } else {
                 setTimeout(() => {
                     window.location.assign('./userProfile.html');
-                }, 5000);
+                }, 3000);
             }
         }
         if(typeof data.error === 'string'){

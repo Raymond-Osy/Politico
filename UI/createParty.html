@@ -42,13 +42,14 @@
                     <a href="party.html"><button class="btn bg-success"><i class="fas fa-list" aria-hidden="true"></i> Available Parties</button></a>
                 </div>
                 <div class="container">
-                    <form action="/action_page.php">
+                    <form id="createPartyForm" role="form" method="POST">
                         <div class="row">
                         <div class="col-25">
                             <label for="lname">Name</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="identity" name="id" placeholder="Enter Political parties name here...">
+                        <span id="invalidName"></span>
+                            <input type="text" id="partyName" name="id" placeholder="Enter Political parties name here...">
                         </div>
                         </div>
                         <div class="row">
@@ -56,7 +57,8 @@
                                 <label for="lname">Head Quarters</label>
                             </div>
                             <div class="col-75">
-                                <input type="text" id="identity" name="id" placeholder="Enter Political parties Head Quarters here...">
+                                <span id="invalidHq"></span>
+                                <input type="text" id="hqName" name="id" placeholder="Enter Political parties Head Quarters here...">
                             </div>
                         </div>
                         <div class="row">
@@ -64,7 +66,7 @@
                                 <label for="lname">Add Logo</label>
                             </div>
                             <div class="col-75">
-                                <input type="file" name="pic" accept="image/*">
+                                <input type="file" id="logoImg" name="pic" accept="image/*">
                             </div>
                         </div>
                         <div class="row-end">
@@ -78,5 +80,6 @@
                 <p>Copyright &copy; 2019, Raymond Akalonu.</p>
             </div>
         </div>
+        <script src="assets/js/admin/createParty.js"></script>
     </body>
 </html>
