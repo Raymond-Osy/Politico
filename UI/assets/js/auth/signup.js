@@ -64,7 +64,7 @@ signupForm.addEventListener('submit', (e) => {
   }
 
   //Consume  API endpoint to /signup
-  fetch(`${baseUrl}signup`, {
+  fetch(`${localUrl}signup`, {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain, */*',
@@ -78,7 +78,7 @@ signupForm.addEventListener('submit', (e) => {
           invalidEmail.style.color = 'red';
         }
         if (data.status === 201){
-          window.localStorage.setItem('token', data.token);
+          window.localStorage.setItem('token', data.data[0].token);
           authResponse.innerHTML = 'Account created successfully';
           authResponse.style.color = 'green';
           setTimeout(() => {
@@ -89,7 +89,7 @@ signupForm.addEventListener('submit', (e) => {
           authResponse.innerHTML = 'Something is not right, please try again later';
           authResponse.style.color = 'red';
         }
-      console.log(data);
+        console.log(data);
   })
   .catch(err => {
     if(err){

@@ -119,10 +119,10 @@ var PartyController = function () {
     value: function deleteParty(req, res) {
       _index2.default.query(_queries2.default.deleteParty, [req.params.id], function (err, dbRes) {
         if (err) {
-          return res.json({ status: 500, error: 'Could not Delete entry, try again later.' });
+          return res.status(500).json({ status: 500, error: 'Could not Delete entry, try again later.' });
         }
         if (dbRes.rowCount === 0) {
-          return res.json({ status: 404, message: 'Party with ID ' + req.params.id + ' does not exist', err: err });
+          return res.status(404).json({ status: 404, message: 'Party with ID ' + req.params.id + ' does not exist', err: err });
         }
         return res.status(200).status(200).json({
           status: 200,

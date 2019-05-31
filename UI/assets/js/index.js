@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Get the modal
 let modal = document.getElementById('myModal');
 let deleteBtn = document.getElementsByClassName('deleteBtn')

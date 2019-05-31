@@ -65,7 +65,7 @@ app.all('/*', function (req, res) {
 var port = process.env.PORT || 8000;
 
 app.listen(port, function () {
-  return console.log('Server listening on port 8000...');
+  return console.log('Server listening on port ' + port + '...');
 });
 
 exports.default = app;
